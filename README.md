@@ -59,7 +59,7 @@ The configuration details of each machine may be found below.
 In addition to the above, Azure has provisioned a load balancer in front of all machines except for the jump box. The load balancer's targets are organized into the following availability zones:
 
 
-- Availability Zone 1: Web-1 + Web-2 + Web-3
+- Availability Zone 1: Web-1 + Web-2
 
 - Availability Zone 2: ELK-Server
 
@@ -207,7 +207,6 @@ This ELK server is configured to monitor the following machines:
 
 - Web-1 (DVWA 1) | 10.0.0.5
 - Web-2 (DVWA 2) | 10.0.0.6
-- Web-3 (DVWA 3) | 10.0.0.7
 
 I have installed the following Beats on these machines:
 
@@ -358,7 +357,7 @@ First I run my ELK playbook to deploy my ELK server:
 ansible-playbook install_elk.yml
 ```
 
-Then I run the Filebeat and Metricbeat playbooks to install the agents on my web servers (Web-1, Web-2, Web-3):
+Then I run the Filebeat and Metricbeat playbooks to install the agents on my web servers (Web-1, Web-2):
 
 ```bash
 ansible-playbook install_filebeat.yml
@@ -464,13 +463,13 @@ Now let's breakdown the syntax of my previous short script:
 
 `{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to our `i` variable.
 
-`ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6, 10.0.0.7 (Web-1, Web-2, Web-3).
+`ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6, 10.0.0.7 (Web-1, Web-2).
 
 
 Next, I want to confirm that `metricbeat` is functioning. To do so I will run a linux stress test.
 
 
-* Generating a high amount of CPU usage on my web servers (Web-1, Web-2 and Web-3) and confirming that Kibana is collecting the data.
+* Generating a high amount of CPU usage on my web servers (Web-1, Web-2) and confirming that Kibana is collecting the data.
 
 
 1. From my Jump Box, I start my Ansible container with the following command:
