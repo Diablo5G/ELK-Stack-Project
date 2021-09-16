@@ -27,7 +27,7 @@ The files in this repository were used to configure the network depicted below.
 These files have been tested and used to generate a live Elastic Stack server deployment on Azure. They can be used to either recreate the entire deployment pictured below. Alternatively, select portions of the YAML files may be used to install only certain pieces of it, such as Filebeat and Metricbeat.
 
 
-![vNet Diagram](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Diagrams/Azure_RedTeam1_vNet_diagram.png)
+![vNet Diagram](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/HW_Week12_CloudTopology.jpg)
 
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
