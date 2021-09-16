@@ -34,10 +34,9 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
  
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| Web-1        |webserver    | 10.0.0.7     | Linux            |
+| Jump Box | Gateway  | 10.0.0.4   | Linux            |
+| Web-1        |webserver    | 10.0.0.5     | Linux            |
 | Web-2        |webserver    | 10.0.0.6     | Linux            |
-| Web-3        |webserver    | 10.0.0.5     | Linux            |
 | ELKserver    |Kibana       | 10.1.0.4     | Linux            |
 | Load Balancer|Load Balancer| 168.62.10.182| DVWA            |
  
@@ -55,9 +54,11 @@ A summary of the access policies in place can be found in the table below.
  
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | 47.185.204.83        |
+| ELK      | No                  |  10.0.0.1-254        |
+| DVWA 1   | No                  |  10.0.0.1-254        |
+| DVWA 2   | No                  |  10.0.0.1-254        |
+
  
 ### Elk Configuration
  
