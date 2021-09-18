@@ -28,9 +28,15 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly available, in addition to restricting inbound access to the network.
 
 What aspect of security do load balancers protect?
-- According to [Azure security baseline for Azure Load Balancer]-(https://bit.ly/3AnSRPV).
+- According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV).
 
-   - The load balancer's main purpose is to distribute a set of tasks over a set of resources to make the overall processing more efficient. In our network, the load balancer's main goal is to process incoming traffic and make sure that it is shared by all vulnerable web servers.
+What is the advantage of a jump box?
+
+What does Filebeat watch for?
+
+What does Metricbeat record?
+
+- The load balancer's main purpose is to distribute a set of tasks over a set of resources to make the overall processing more efficient. In our network, the load balancer's main goal is to process incoming traffic and make sure that it is shared by all vulnerable web servers.
 
 Why a Jump Box?
 
