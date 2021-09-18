@@ -3,7 +3,7 @@ Automated ELK Stack Deployment
  
 The files in this repository were used to configure the network depicted below.
  
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YAML file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate an automated ELK Stack Deployment on Azure. They can be used to either recreate the entire deployment figured below. Otherwise, select portions of the YAML files may be used to install only certain pieces of it, for example, Filebeat and Metricbeat.
 
   - install-elk.yml
   - filebeat-config.yml
@@ -12,11 +12,11 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - metricbeat-playbook.yml
  
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
 - Beats in Use
- - Machines Being Monitored
+- Machines Being Monitored
 - How to Use the Ansible Build
  
  
@@ -27,7 +27,7 @@ The files in this repository were used to configure the network depicted below.
 These files have been tested and used to generate a live Elastic Stack server deployment on Azure. They can be used to either recreate the entire deployment pictured below. Alternatively, select portions of the YAML files may be used to install only certain pieces of it, such as Filebeat and Metricbeat.
 
 
-![vNet Diagram](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Diagrams/ELK-Project-V2.jpg)
+![vNet Diagram](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Diagrams/ELK-Project-V1.jpg)
 
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
