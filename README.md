@@ -28,25 +28,25 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly available, in addition to restricting inbound access to the network.
 
 What aspect of security do load balancers protect?
-- According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV).
+- According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV), the load balancer's main purpose is to distribute a set of tasks over a set of resources to make the overall processing more efficient. In our network, the load balancer's main goal is to process incoming traffic and make sure that it is shared by all vulnerable web servers.
 
 What is the advantage of a jump box?
-
-What does Filebeat watch for?
-
-What does Metricbeat record?
-
-- The load balancer's main purpose is to distribute a set of tasks over a set of resources to make the overall processing more efficient. In our network, the load balancer's main goal is to process incoming traffic and make sure that it is shared by all vulnerable web servers.
+- According to
 
 Why a Jump Box?
 
-  - A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a security layer between networks and/or security zones and provides a controlled way to access them.
+- A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a security layer between networks and/or security zones and provides a controlled way to access them.
 
 Via the Jump Box, I make sure that access controls are in place to ensure that only authorized users (in this case, ourselves), will be able to connect to the network.
 
 
 Integrating an Elastic Stack server allows users to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
 
+What does Filebeat watch for?
+- According to
+
+What does Metricbeat record?
+- According to
 
 The configuration details of each machine may be found below.
  
