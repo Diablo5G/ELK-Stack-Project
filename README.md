@@ -197,12 +197,38 @@ ansible-playbook install-elk.yml
 
 The following screenshot displays the result of running `install-elk.yml`
 
-![Docker ps output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Install_elk_result.png)
+![Docker ELKResult output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Install_elk_result.png)
+
+SSH to your container: ```ssh sysadmin@10.1.0.4``` and RUN ```sudo docker ps```
+
+The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
+
+![Docker InstallELK output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
+
+Logging into the Elk server and manually launch the ELK container with: 
+
+```bash
+sudo docker start elk
+```
+then ```curl http://localhost:5601/app/kibana``` does return HTML.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
 
 ![Docker ps output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
  
+⚠️ Checkpoint ⚠️
+Before continuing, make sure you have completed the following critical tasks.
+✔️ An Ansible playbook has been created that installs and configures an ELK container.
+✔️ The Ansible playbook can be run on the new VM.
+
+The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). You need to add your public IP address to a whitelist, just as you did when clearing access to your jump box.
+
+
+
+
+
+
+
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
