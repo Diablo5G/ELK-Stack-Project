@@ -67,8 +67,6 @@ In addition to the above, Azure has provisioned a load balancer in front of all 
 
 - Availability Zone 1: Web-1 + Web-2
 
-- Availability Zone 2: ELKServer
-
 
 ### Access Policies
  
@@ -318,7 +316,10 @@ Metricbeat playbook I used below:
       name: metricbeat
       enabled: yes
 ```
- 
+<details>
+<summary> <b> Click here to view Using the Playbook. </b> </summary>
+
+--- 
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
 
