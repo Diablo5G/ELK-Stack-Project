@@ -74,11 +74,7 @@ In addition to the above, Azure has provisioned a load balancer in front of all 
  
 The machines on the internal network are not exposed to the public Internet.
  
-Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- 47.185.204.83
- 
-Machines within the network can only be accessed by SSH from Jump Box.
-- Jump-Box-Provisioner allow to access ELK VM from the following IP Address: 47.185.204.83
+Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: 47.185.204.83 Machines within the network can only be accessed by SSH from Jump Box.
  
 A summary of the access policies in place can be found in the table below.
  
@@ -94,8 +90,8 @@ A summary of the access policies in place can be found in the table below.
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
 
-- _What is the main advantage of automating configuration with Ansible?_
-- xxx
+What is the main advantage of automating configuration with Ansible?_
+- Ansible is focusing on bringing a server to a certain state of operation.
 
 The playbook implements the following tasks:
 
