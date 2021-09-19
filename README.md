@@ -91,15 +91,14 @@ Only the Jump Box machine can accept connections from the Internet. Access to th
 - _47.185.204.83_
  
 Machines within the network can only be accessed by SSH from Jump Box.
-- _Which machine did you allow to access your ELK VM? What was its IP address?_
-- _Ansible container inside Jump-Box-Provisioner allow to 47.185.204.83_
+- _Jump-Box-Provisioner allow to access ELK VM from the following IP Address: 47.185.204.83_
  
 A summary of the access policies in place can be found in the table below.
  
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump-Box-Provisioner | Yes                 | 47.185.204.83        |
-| ELKServer      | Yes                  |  10.0.0.1-254        |
+| ELKServer      | Yes                  |  104.45.159.216:5601        |
 | DVWA 1   | No                  |  10.0.0.1-254        |
 | DVWA 2   | No                  |  10.0.0.1-254        |
 
