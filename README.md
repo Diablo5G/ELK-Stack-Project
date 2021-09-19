@@ -29,17 +29,17 @@ Load balancing ensures that the application will be highly available, in additio
 
 What aspect of security do load balancers protect?
 - According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV), the load balancer's main purpose is to distribute web traffic across multiple servers. In our network, the load balancer was installed in front of the VM to 
-+  protect Azure resources within virtual networks
-+  monitor and log the configuration and traffic of virtual networks, subnets, and NICs
-+  protect critical web applications
-+  deny communications with known malicious IP addresses
-+  record network packets
-+  deploy network-based intrusion detection/intrusion prevention systems (IDS/IPS)
-+  manage traffic to web applications
-+  minimize complexity and administrative overhead of network security rules
-+  maintain standard security configurations for network devices
-+  document traffic configuration rules
-+  use automated tools to monitor network resource configurations and detect changes
+...+  protect Azure resources within virtual networks
+...+  monitor and log the configuration and traffic of virtual networks, subnets, and NICs
+...+  protect critical web applications
+...+  deny communications with known malicious IP addresses
+...+  record network packets
+...+  deploy network-based intrusion detection/intrusion prevention systems (IDS/IPS)
+...+  manage traffic to web applications
+...+  minimize complexity and administrative overhead of network security rules
+...+  maintain standard security configurations for network devices
+...+  document traffic configuration rules
+...+  use automated tools to monitor network resource configurations and detect changes
 
 What is the advantage of a jump box?
 - A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a is a "bridge" between two trusted networks between zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
