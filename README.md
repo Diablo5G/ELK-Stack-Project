@@ -217,13 +217,14 @@ The following screenshot displays the result of running `curl` after start ELK c
 ![Docker curl output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CurlResult.png)
  
 ⚠️ Checkpoint ⚠️
-✔️ An Ansible playbook has been created that installs and configures an ELK container.
-✔️ The Ansible playbook can be run on the new VM.
+ + ✔️ An Ansible playbook has been created that installs and configures an ELK container.
+ + ✔️ The Ansible playbook can be run on the new VM.
 
-The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
+This step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
 
+Go to Network Security Group to config your host IP to Kibana as follow
 
-
+![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
 
 
