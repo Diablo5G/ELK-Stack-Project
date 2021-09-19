@@ -69,26 +69,13 @@ In addition to the above, Azure has provisioned a load balancer in front of all 
 
 - Availability Zone 2: ELKServer
 
-## ELK Server Configuration
-
-The ELK Virtual Machine exposes an Elastic Stack instance. Docker is used to download and manage an ELK container.
-
-Rather than configure Elastic Stack server manually, I opted to develop a reusable Ansible Playbook to accomplish the task. This playbook is duplicated below.
-
-To use this playbook, one must log into the Jump Box, then issue the command: 
-
-```bash
-ansible-playbook install_elk.yml
-```
-
-This runs the install_elk.yml playbook on the elk host.
 
 ### Access Policies
  
 The machines on the internal network are not exposed to the public Internet.
  
 Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _47.185.204.83_
+- 47.185.204.83
  
 Machines within the network can only be accessed by SSH from Jump Box.
 - _Jump-Box-Provisioner allow to access ELK VM from the following IP Address: 47.185.204.83_
