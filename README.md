@@ -90,7 +90,7 @@ A summary of the access policies in place can be found in the table below.
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
 
-What is the main advantage of automating configuration with Ansible?_
+What is the main advantage of automating configuration with Ansible?
 - Ansible is focusing on bringing a server to a certain state of operation.
 
 The playbook implements the following tasks:
@@ -99,7 +99,7 @@ The playbook implements the following tasks:
 ---
 - name: Configure Elk VM with Docker
   hosts: elk
-  remote_user: Web_1
+  remote_user: sysadmin
   become: true
   tasks:
 ```
