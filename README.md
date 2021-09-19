@@ -298,7 +298,7 @@ ssh sysadmin@168.61.162.23
 ```
 
 
-![SSH into ump box](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/SSH_into_Jump_Box.png)
+![SSH into ump box](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/SSH_into_Jump_Box.png)
 
 Then I run the following command to start and launch my Ansible docker container (i.e., the Ansible Control Node):
 
@@ -313,36 +313,15 @@ sudo docker attach goofy_wright
 
 Note: Your container will have a different name.
 
-![Start and launch ansible container](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/start_launch_ansible_container.png)
+![Start and launch ansible container](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Start_launch_ansible.png)
 
-Then, I copy the playbooks into the correct location. The easiest way to do that is to use Git and run the following commands in your terminal:
-
-```bash
-cd /etc/ansible
-
-mkdir files
-
-# Clone Repository + IaC Files
-
-git clone https://github.com/yourusername/projectname.git
-
-# Move Playbooks and hosts file Into `/etc/ansible`
-
-cp projectname/playbooks/* .
-
-cp projectname/files/* ./files
-```
-
-Now that all the files I need are copied into the correct location, I can update the list of web servers to run the playbooks on:
-
-I need to edit the "hosts" file located in /etc/ansible using the following commands:
+Then, I need to edit the "hosts" file located in /etc/ansible using the following commands:
 
 ```bash
-nano hosts
+nano /etc/ansible/hosts
 ```
 
-
-Then I will update the file with the IP of the web servers we want to install Filebeat & Metricbeat & ELK on. To create a group I need to use brackets "[]", give the group of server a name (i.e., "webservers" & "elk") followed by the IP addresses of the servers.
+and put your IP with ansible_python_interpreter=/usr/bin/python3. Then, we update the file with the IP of the web servers we want to install Filebeat & Metricbeat & ELK on. To create a group I need to use brackets "[]", give the group of server a name (i.e., "webservers" & "elk") followed by the IP addresses of the servers.
 
 ![hosts file web server edit](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/hosts_file_web_servers_edit.png)
 
