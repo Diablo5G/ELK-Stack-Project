@@ -315,34 +315,13 @@ Note: Your container will have a different name.
 
 ![Start and launch ansible container](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Start_launch_ansible.png)
 
-Then, I copy the playbooks into the correct location. The easiest way to do that is to use Git and run the following commands in your terminal:
+Then, I need to edit the "hosts" file located in /etc/ansible using the following commands:
 
 ```bash
-cd /etc/ansible
-
-mkdir files
-
-# Clone Repository + IaC Files
-
-git clone https://github.com/yourusername/projectname.git
-
-# Move Playbooks and hosts file Into `/etc/ansible`
-
-cp projectname/playbooks/* .
-
-cp projectname/files/* ./files
+nano /etc/ansible/hosts
 ```
 
-Now that all the files I need are copied into the correct location, I can update the list of web servers to run the playbooks on:
-
-I need to edit the "hosts" file located in /etc/ansible using the following commands:
-
-```bash
-nano hosts
-```
-
-
-Then I will update the file with the IP of the web servers we want to install Filebeat & Metricbeat & ELK on. To create a group I need to use brackets "[]", give the group of server a name (i.e., "webservers" & "elk") followed by the IP addresses of the servers.
+and put your IP with ansible_python_interpreter=/usr/bin/python3. Then, we update the file with the IP of the web servers we want to install Filebeat & Metricbeat & ELK on. To create a group I need to use brackets "[]", give the group of server a name (i.e., "webservers" & "elk") followed by the IP addresses of the servers.
 
 ![hosts file web server edit](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/hosts_file_web_servers_edit.png)
 
