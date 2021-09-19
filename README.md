@@ -298,7 +298,7 @@ ssh sysadmin@168.61.162.23
 ```
 
 
-![SSH into ump box](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/SSH_into_Jump_Box.png)
+![SSH into ump box](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/SSH_into_Jump_Box.png)
 
 Then I run the following command to start and launch my Ansible docker container (i.e., the Ansible Control Node):
 
@@ -313,7 +313,7 @@ sudo docker attach goofy_wright
 
 Note: Your container will have a different name.
 
-![Start and launch ansible container](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/start_launch_ansible_container.png)
+![Start and launch ansible container](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Start_launch_ansible.png)
 
 Then, I copy the playbooks into the correct location. The easiest way to do that is to use Git and run the following commands in your terminal:
 
