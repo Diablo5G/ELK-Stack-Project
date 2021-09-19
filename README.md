@@ -294,7 +294,7 @@ First, I SSH into the control node and follow the steps below:
 So first I connect to my Jump Box using the following command to SSH into the box:
 
 ```bash
-ssh azadmin@51.141.166.114
+ssh sysadmin@168.61.162.23
 ```
 
 
@@ -303,7 +303,12 @@ ssh azadmin@51.141.166.114
 Then I run the following command to start and launch my Ansible docker container (i.e., the Ansible Control Node):
 
 ```bash
-sudo docker start hopeful_lalande && sudo docker attach hopeful_lalande 
+sudo docker start goofy_wright
+```
+and
+
+```bash
+sudo docker attach goofy_wright 
 ```
 
 Note: Your container will have a different name.
