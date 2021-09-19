@@ -67,7 +67,7 @@ In addition to the above, Azure has provisioned a load balancer in front of all 
 
 - Availability Zone 1: Web-1 + Web-2
 
-- Availability Zone 2: ELK-Server
+- Availability Zone 2: ELKServer
 
 ## ELK Server Configuration
 
@@ -107,6 +107,9 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
+
+- _What is the main advantage of automating configuration with Ansible?_
+- xxx
 
 The playbook implements the following tasks:
 
