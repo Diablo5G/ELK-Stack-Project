@@ -29,9 +29,9 @@ Load balancing ensures that the application will be highly available, in additio
 
 What aspect of security do load balancers protect?
 - According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV), the load balancer's main purpose is to distribute web traffic across multiple servers. In our network, the load balancer was installed in front of the VM to 
-...protect Azure resources within virtual networks
-...  monitor and log the configuration and traffic of virtual networks, subnets, and NICs
-...+  protect critical web applications
+⋅⋅⋅protect Azure resources within virtual networks
+⋅⋅⋅monitor and log the configuration and traffic of virtual networks, subnets, and NICs
+⋅⋅⋅+⋅⋅⋅protect critical web applications
 ...+  deny communications with known malicious IP addresses
 ...+  record network packets
 ...+  deploy network-based intrusion detection/intrusion prevention systems (IDS/IPS)
