@@ -56,7 +56,7 @@ The configuration details of each machine may be found below.
  
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
+| Jump Box Provisioner | Gateway  | 10.0.0.4   | Linux            |
 | Web-1        |webserver    | 10.0.0.5     | Linux            |
 | Web-2        |webserver    | 10.0.0.6     | Linux            |
 | ELKserver    |Kibana       | 10.1.0.4     | Linux            |
@@ -87,17 +87,18 @@ This runs the install_elk.yml playbook on the elk host.
  
 The machines on the internal network are not exposed to the public Internet.
  
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- _47.185.204.83_
  
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by SSH from Jump Box.
+- _Which machine did you allow to access your ELK VM? What was its IP address?_
+- _Jump-Box-Provisioner 47.185.204.83_
  
 A summary of the access policies in place can be found in the table below.
  
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 | 47.185.204.83        |
+| Jump Box Provisioner | Yes                 | 47.185.204.83        |
 | ELK-SERVER      | No                  |  10.0.0.1-254        |
 | DVWA 1   | No                  |  10.0.0.1-254        |
 | DVWA 2   | No                  |  10.0.0.1-254        |
