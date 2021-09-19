@@ -212,16 +212,17 @@ sudo docker start elk
 ```
 then ```curl http://localhost:5601/app/kibana``` does return HTML.
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
+The following screenshot displays the result of running `curl` after start ELK container
 
-![Docker ps output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
+![Docker curl output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CurlResult.png)
  
 ⚠️ Checkpoint ⚠️
-Before continuing, make sure you have completed the following critical tasks.
 ✔️ An Ansible playbook has been created that installs and configures an ELK container.
 ✔️ The Ansible playbook can be run on the new VM.
 
-The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). You need to add your public IP address to a whitelist, just as you did when clearing access to your jump box.
+The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
+
+
 
 
 
