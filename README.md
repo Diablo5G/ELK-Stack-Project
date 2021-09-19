@@ -3,7 +3,7 @@
  
 The files in this repository were used to configure the network depicted below.
 
-![vNet Diagram](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Diagrams/ELK-Project-V1.jpg)
+![vNet Diagram](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Diagrams/ELK-Project-V1.jpg)
  
 These files have been tested and used to generate an automated ELK Stack Deployment on Azure. They can be used to either recreate the entire deployment figured below. Otherwise, select portions of the YAML files may be used to install only certain pieces of it, for example, Filebeat and Metricbeat.
 
@@ -109,7 +109,7 @@ The playbook implements the following tasks:
 Next I defined the managed nodes to target, in this case I set the keyword 'hosts:' to "elk", making sure that the playbook is run only on the machines in the "elk" group. 
 To edit groups and add/remove machines from a group, the following inventory file located in /etc/ansible is used (see image below).
 
-![hosts file editing](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/hosts_file_web_servers_edit.png) 
+![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ConfigELK.png) 
 
 Next I defined the user account for the SSH connection, i.e., Web_1, by setting the keyword 'remote_user:' to "Web_1".
 
@@ -192,7 +192,7 @@ In this play, the ansible systemd module is used to start docker on boot, settin
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
 
-![Docker ps output](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/elk_docker_ps_output.png)
+![Docker ps output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
  
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -226,7 +226,7 @@ Filebeat playbook I used below:
     # Use copy module
   - name: Drop in filebeat.yml
     copy:
-      src: /etc/ansible/files/filebeat-config.yml
+      src: /etc/ansible/roles/install-filebeat/files/filebeat-config.yml
       dest: /etc/filebeat/filebeat.yml
     # Use command module
   - name: Enable and Configure System Module
@@ -264,7 +264,7 @@ Metricbeat playbook I used below:
     # Use copy module
   - name: drop in metricbeat config
     copy:
-      src: /etc/ansible/files/metricbeat-config.yml
+      src: /etc/ansible/roles/install-metricbeat/files/metricbeat-config.yml
       dest: /etc/metricbeat/metricbeat.yml
     # Use command module
   - name: enable and configure docker module for metric beat
