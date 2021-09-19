@@ -592,3 +592,19 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
+
+
+######################
+SSH into the control node and follow the steps below:
+
+Copy the playbook file to the Ansible container.
+Update the hosts file to include the elk host group and, in that group, the ELKStack-1 VM IP address
+Run the playbook, and navigate to http://40.122.109.116:5601/app/kibana to check that the installation worked as expected.
+Answer the following questions to fill in the blanks:
+
+Which file is the playbook? Where do you copy it?
+install-elk.yml; /etc/ansible/ on the Ansible container
+Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+/ect/ansible/hosts file; the groups within the host file are called when running the playbooks. The 'elk' group is called to install the ELK server on while the 'webserver' group is called to install Filebeat
+Which URL do you navigate to in order to check that the ELK server is running? -http://40.122.109.116:5601/app/kibana
+######################
