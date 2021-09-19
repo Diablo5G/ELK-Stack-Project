@@ -189,11 +189,46 @@ The keyword 'published_ports:' is set with the 3 ports that are used by our Elas
 
 In this play, the ansible systemd module is used to start docker on boot, setting the keyword 'enabled:' to "yes".
 
+Now we can start launching and exposing the container by run
+
+```bash
+ansible-playbook install-elk.yml
+```
+
+The following screenshot displays the result of running `install-elk.yml`
+
+![Docker ELKResult output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Install_elk_result.png)
+
+SSH to your container: ```ssh sysadmin@10.1.0.4``` and RUN ```sudo docker ps```
+
+The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
+
+![Docker InstallELK output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
+
+Logging into the Elk server and manually launch the ELK container with: 
+
+```bash
+sudo docker start elk
+```
+then ```curl http://localhost:5601/app/kibana``` does return HTML.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
 
 ![Docker ps output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InstallELK.png)
  
+⚠️ Checkpoint ⚠️
+Before continuing, make sure you have completed the following critical tasks.
+✔️ An Ansible playbook has been created that installs and configures an ELK container.
+✔️ The Ansible playbook can be run on the new VM.
+
+The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). You need to add your public IP address to a whitelist, just as you did when clearing access to your jump box.
+
+
+
+
+
+
+
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
@@ -314,16 +349,6 @@ sudo docker attach goofy_wright
 Note: Your container will have a different name.
 
 ![Start and launch ansible container](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Start_launch_ansible.png)
-
-Then, I need to edit the "hosts" file located in /etc/ansible using the following commands:
-
-```bash
-nano /etc/ansible/hosts
-```
-
-and put your IP with ansible_python_interpreter=/usr/bin/python3. Then, we update the file with the IP of the web servers we want to install Filebeat & Metricbeat & ELK on. To create a group I need to use brackets "[]", give the group of server a name (i.e., "webservers" & "elk") followed by the IP addresses of the servers.
-
-![hosts file web server edit](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/hosts_file_web_servers_edit.png)
 
 Next, I run the playbooks.
 
