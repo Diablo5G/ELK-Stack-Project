@@ -47,10 +47,10 @@ What is the advantage of a jump box?
 Integrating an Elastic Stack server allows users to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
 
 What does Filebeat watch for?
-- According to [Elastic : How Filebeat works](https://www.elastic.co/guide/en/beats/filebeat/current/how-filebeat-works.html), Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
+- Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
 
 What does Metricbeat record?
-- Metricbeat helps you monitor your servers by collecting metrics from the system and services running on the server so It records machine metrics and stats, such as uptime.
+- Metricbeat helps monitor servers by collecting metrics from the system and services running on the server so it records machine metrics and stats, such as uptime.
 
 The configuration details of each machine may be found below.
  
@@ -78,7 +78,7 @@ Only the Jump Box machine can accept connections from the Internet. Access to th
 - 47.185.204.83
  
 Machines within the network can only be accessed by SSH from Jump Box.
-- _Jump-Box-Provisioner allow to access ELK VM from the following IP Address: 47.185.204.83_
+- Jump-Box-Provisioner allow to access ELK VM from the following IP Address: 47.185.204.83
  
 A summary of the access policies in place can be found in the table below.
  
