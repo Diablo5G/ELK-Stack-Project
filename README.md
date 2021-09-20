@@ -522,10 +522,10 @@ Next, I want to confirm that `metricbeat` is functioning. To do so I will run a 
 sudo docker start goofy_wright && sudo docker attach goofy_wright
 ```
 
-2. I SSH from my Ansible container to one of my web server.
+2. Then, SSH from my Ansible container to Web-1.
 
 ```bash
-ssh Web_1@10.0.0.5
+ssh sysadmin@10.0.0.5
 ```
 
 3. I install the `stress` module with the following command:
@@ -540,64 +540,66 @@ sudo apt install stress
 sudo stress --cpu 1
 ```
 
-Next, I compare 2 of my web servers to see the difference in CPU usage, confirming that `metricbeat` is capturing the increase in CPU usage due to our stress command:
+   - _Note: The stress program will run until you quit with Ctrl+C._
+	
+Next, view the Metrics page for that VM in Kibana and comparing 2 of web servers to see the differences in CPU usage, confirmed that `metricbeat` is capturing the increase in CPU usage due to our stress command:
 
-![cpu stress test results](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/7393789af6e4858bb3db389ed5271e2b712c6579/Images/cpu_stress_test_result.png)
+![cpu stress test results](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/cpu%20stress%20test%20results.png)
 
 
 Another view of the CPU usage metrics Kibana collected:
 
-![cpu stress test results graph](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/cpu_stress_test_result_graph.png)
+![cpu stress test results graph](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/cpu%20stress%20test%20results%20graph.png)
 
 
-#### Generate a high amount of web requests to my web servers and make sure that Kibana is picking them up.
+#### Generate a high amount of web requests to both web servers and make sure that Kibana is picking them up.
 
-This time I want to generate a high amount of web requests directed to one of my web servers, I will use `wget` to launch a DoS attack.
+This time we will generate a high amount of web requests directed to one of my web servers. To do so, I will use `wget` to launch a DoS attack.
 
-1. I log into my Jump Box
+1. Log into my Jump Box Provisioner
+	
+   - ```bash
+        ssh sysadmin@<jump-box-provisioner>
+     ``` 
 
 2. I need to add a new firewall rule to allow my Jump Box (10.0.0.4) to connect to my web servers over HTTP on port 80. To do so, I add a new Inbound Security Rule to my RedTeam1 Network Security Group:
 
-![jump to http to webservers](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/jumpbox_http_to_webservers.png)
+![jump to http to webservers](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/jump%20to%20http%20to%20webservers.png)
 
 
-3. I run the following command to download the file `index.html` from my Web-1 VM:
+3. Run the following command to download the file `index.html` from Web-1 VM:
 
-```bash
-wget 10.0.0.5
-```
+   - ```bash
+        wget 10.0.0.5
+     ```
 
 Output of the command:
 
-![index html download](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/index_html_download.png)
+![index html download](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/index%20html%20download.png)
 
 
-4. I confirm that the file has been downloaded with the `ls` command:
+4. Confirm that the file has been downloaded with the `ls` command:
 
 
-```bash
-sysadmin@Jump-Box-Provisioner:~$ ls 
-index.html
-```
+   - ```bash
+        sysadmin@Jump-Box-Provisioner:~$ ls 
+        index.html
+     ```
 
 5. Next, I run the `wget` command in a loop to generate a very high number of web requests, I will use the `while` loop:
 
-```bash
-while true; do wget 10.0.0.5; done
-```
+   - ```bash
+        while true; do wget 10.0.0.5; done
+     ```
 
 The result is that the `Load`, `Memory Usage` and `Network Traffic` were hit as seen below:
 
-![load increase DoS](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/load_increase_DoS.png)
-
-![memory usage](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/memory_usage.png)
-
-![network traffic increase](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/network_traffic_increase.png)
+![load increase DoS](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/load%20increase%20DoS.png)
 
 After stopping the `wget` command, I can see that thousands of index.html files were created (as seen below).
 
 
-![index html files](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/index_html_files.png)
+![index html files](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/index%20html%20files.png)
 
 
 I can use the following command to clean that up:
@@ -609,7 +611,7 @@ rm *
 Now if we use `ls` again, the directory is a lot cleaner:
 
 
-![directory cleanup](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/b3cb4729f2d776119d25fea2dcb676c6a22197c1/Images/directory_cleanup.png)
+![directory cleanup](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/directory%20cleanup.png)
 
 
 I can also avoid the creation of the `index.html` file by adding the flag `-O` to my command so that I can specify a destination file where all the `index.html` files will be concatenated and written to.
