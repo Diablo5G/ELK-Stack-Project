@@ -562,7 +562,7 @@ This time we will generate a high amount of web requests directed to one of my w
         ssh sysadmin@<jump-box-provisioner>
      ``` 
 
-2. I need to add a new firewall rule to allow my Jump Box (10.0.0.4) to connect to my web servers over HTTP on port 80. To do so, I add a new Inbound Security Rule to my RedTeam1 Network Security Group:
+2. I need to add a new firewall rule to allow my Jump Box (10.0.0.4) to connect to my web servers over HTTP on port 80. To do so, I add a new Inbound Security Rule to Red-Team Network Security Group:
 
 ![jump to http to webservers](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/jump%20to%20http%20to%20webservers.png)
 
