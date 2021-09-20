@@ -235,8 +235,6 @@ Go to Network Security Group to config your host IP to Kibana as follow
 
 </details>
 
----
-
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
@@ -331,9 +329,7 @@ Metricbeat playbook I used below:
       enabled: yes
 ```
  
-
----
- 
+<details>
  
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
