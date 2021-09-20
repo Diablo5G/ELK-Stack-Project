@@ -110,9 +110,7 @@ We will configure an ELK server within virtual network. Specifically,
 - Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
 - In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If your network is different (10.2.0.0 or 10.3.0.0) it is ok as long as you accept the default settings. Azure automatically creates a network that will work.
 
-![Create vNet](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
- 
-![Create vNet_2](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
+![Create vNet](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png)  
 
 2. Create a Peer connection between your vNets. This will allow traffic to pass between your vNets and regions. This peer connection will make both a connection from your first vNet to your Second vNet And a reverse connection from your second vNet back to your first vNet. This will allow traffic to pass in both directions.
 - Navigate to `Virtual Network` in the Azure Portal.
@@ -123,9 +121,9 @@ We will configure an ELK server within virtual network. Specifically,
 - Choose your original RedTeam vNet in the dropdown labeled `Virtual Network`.
 - Leave all other settings at their defaults.
  
-![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
+![PeeringsELKtoRed](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ELKtoRed.png) 
  
-![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
+![PeeringsRedtoELK](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/RedtoELK.png)  
 
 3. Create a new Ubuntu VM in your virtual network with the following configurations:
 - The VM must have a public IP address.
