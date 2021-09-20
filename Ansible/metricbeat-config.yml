@@ -59,7 +59,7 @@ setup.template.settings:
 # Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
 # This requires a Kibana endpoint configuration.
 setup.kibana:
-  host: "10.0.0.12:5601"
+  host: "10.1.0.4:5601"
 
   # Kibana Host
   # Scheme and port can be left out and will be set to the default (http and 5601)
@@ -93,7 +93,7 @@ setup.kibana:
 output.elasticsearch:
   # TODO: Change the hosts IP address to the IP address of your ELK server
   # TODO: Change password from `changem` to the password you created
-  hosts: ["10.0.0.12:9200"]
+  hosts: ["10.1.0.4:9200"]
   username: "elastic"
   password: "changeme"
 
