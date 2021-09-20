@@ -27,7 +27,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting inbound access to the network.
 
-  > **What aspect of security do load balancers protect?**
+> What aspect of security do load balancers protect?
 - According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV), the load balancer's main purpose is to distribute web traffic across multiple servers. In our network, the load balancer was installed in front of the VM to 
    - protect Azure resources within virtual networks.
    - monitor and log the configuration and traffic of virtual networks, subnets, and NICs.
@@ -42,16 +42,15 @@ Load balancing ensures that the application will be highly available, in additio
    - use automated tools to monitor network resource configurations and detect changes
 
 
-  > **What is the advantage of a jump box?**
+> What is the advantage of a jump box?
 - A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a is a "bridge" between two trusted networks between zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
 
 Integrating an Elastic Stack server allows users to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
 
-  > **What does Filebeat watch for?**
+> What does Filebeat watch for?
 - Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
 
-
-  > **What does Metricbeat record?**
+> What does Metricbeat record?
 - Metricbeat helps monitor servers by collecting metrics from the system and services running on the server so it records machine metrics and stats, such as uptime.
 
 The configuration details of each machine may be found below.
@@ -91,7 +90,7 @@ A summary of the access policies in place can be found in the table below.
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
 
-  > **What is the main advantage of automating configuration with Ansible?**
+> What is the main advantage of automating configuration with Ansible?
 - Ansible is focusing on bringing a server to a certain state of operation.
 
 <details>
