@@ -244,8 +244,9 @@ In this play, the ansible systemd module is used to start docker on boot, settin
         name: docker
         enabled: yes
 ```
+![Install_elk_yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Install_elk_yml.png)
 
- Now we can start launching and exposing the container by run
+Now we can start launching and exposing the container by run
 
 ```bash
 ansible-playbook install-elk.yml
@@ -276,7 +277,7 @@ This step is to restrict access to the ELK VM using Azure's network security gro
 
 Go to Network Security Group to config your host IP to Kibana as follow
 
-![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
+![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Docker%20InboundSecRules%20output.png)
 
 Then try to access web browser to http://your.ELK-VM.External.IP:5601/app/kibana
  
