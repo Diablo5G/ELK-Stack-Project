@@ -41,6 +41,7 @@ Load balancing ensures that the application will be highly available, in additio
    - document traffic configuration rules
    - use automated tools to monitor network resource configurations and detect changes
 
+
   > **What is the advantage of a jump box?**
 - A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a is a "bridge" between two trusted networks between zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
 
@@ -48,6 +49,7 @@ Integrating an Elastic Stack server allows users to easily monitor the vulnerabl
 
   > **What does Filebeat watch for?**
 - Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
+
 
   > **What does Metricbeat record?**
 - Metricbeat helps monitor servers by collecting metrics from the system and services running on the server so it records machine metrics and stats, such as uptime.
