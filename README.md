@@ -230,12 +230,11 @@ Go to Network Security Group to config your host IP to Kibana as follow
 
 
 
-
-
+ 
 <details>
-<summary> <b> Click here to view Target Machines & Beats. </b> </summary>
 
 ---
+ 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
@@ -251,6 +250,11 @@ These Beats allow us to collect the following information from each machine:
 
 `Filebeat`: Filebeat detects changes to the filesystem. I use it to collect system logs and more specifically, I use it to detect SSH login attempts and failed sudo escalations.
 
+<details>
+<summary> <b> Click here to view Target Machines & Beats. </b> </summary>
+
+---
+ 
 Filebeat playbook I used below:
 
 ```yaml
@@ -323,14 +327,20 @@ Metricbeat playbook I used below:
       name: metricbeat
       enabled: yes
 ```
+ 
 <details>
-<summary> <b> Click here to view Using the Playbook. </b> </summary>
 
---- 
+---
+ 
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
 
-First, I SSH into the control node and follow the steps below:
+<details>
+<summary> <b> Click here to view Using the Playbook. </b> </summary>
+
+---
+
+ First, I SSH into the control node and follow the steps below:
 
 - Copy the playbook files to the Ansible control node.
 - Update the "hosts" file to include the groups of hosts representing the targeted servers to run the playbooks on.
@@ -601,6 +611,9 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
 
+</details>
+
+---
 
 ######################
 SSH into the control node and follow the steps below:
