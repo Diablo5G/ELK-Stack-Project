@@ -62,10 +62,7 @@ The configuration details of each machine may be found below.
 | ELKServer    |Kibana       | 104.45.159.216 ; 10.1.0.4     | Linux            |
 | RedTeam-LB|Load Balancer| 40.122.215.16| DVWA            |
  
-In addition to the above, Azure has provisioned a load balancer in front of all machines except for the jump box. The load balancer's targets are organized into the following availability zones:
-
-
-- Availability Zone 1: Web-1 + Web-2
+In addition to the above, Azure has provisioned a load balancer in front of all machines except for the jump box. The load balancer's targets are organized into availability zones: Web-1 + Web-2
 
 
 ### Access Policies
@@ -100,7 +97,46 @@ What is the main advantage of automating configuration with Ansible?
 
 ---
  
-The playbook implements the following tasks:
+We will configure an ELK server within virtual network. Specifically,
+ 
+1. Deployed a new VM on your virtual network.
+2. Created an Ansible play to install and configure an ELK instance.
+3. Restricted access to the new server.
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ The playbook implements the following tasks:
 
 ```yaml
 ---
@@ -617,7 +653,7 @@ My Elastic Stack server is now functioning and correctly monitoring my load-bala
 
 ---
 
-# SSH into the control node and follow the steps below:
+## SSH into the control node and follow the steps below:
 
 Copy the playbook file to the Ansible container.
 Update the hosts file to include the elk host group and, in that group, the ELKStack-1 VM IP address
@@ -629,6 +665,26 @@ install-elk.yml; /etc/ansible/ on the Ansible container
 Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 /ect/ansible/hosts file; the groups within the host file are called when running the playbooks. The 'elk' group is called to install the ELK server on while the 'webserver' group is called to install Filebeat
 Which URL do you navigate to in order to check that the ELK server is running? -http://40.122.109.116:5601/app/kibana
+
+---
+
+## Citation Reference;
+
+#### Resources
+
+- [`elk-docker` Container Documentation](https://elk-docker.readthedocs.io/)
+- [Elastic.co: The Elastic Stack](https://www.elastic.co/elastic-stack)
+- [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
+- [`elk-docker` Image Documentation](https://elk-docker.readthedocs.io/#elasticsearch-logstash-kibana-elk-docker-image-documentation)
+- [Virtual Memory Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/vm-max-map-count.html#vm-max-map-count)
+- ELK Server URL: http://[your.IP]:5601
+- [Docker Commands Cheatsheet](https://phoenixnap.com/kb/list-of-docker-commands-cheat-sheet)
+
+#### Azure Documentation:
+
+- Azure's page on peer networks: [Network-Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)
+- Peer networking in Azure How-To: [Global vNet Peering](https://azure.microsoft.com/en-ca/blog/global-vnet-peering-now-generally-available/)
+- Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 ---
 
