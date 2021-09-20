@@ -273,6 +273,8 @@ The following screenshot displays the result of running `curl` after start ELK c
 
 ![Docker curl output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CurlResult.png)
 
+#### Restricted access to the new server.
+	
 This step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
 
 Go to Network Security Group to config your host IP to Kibana as follow
@@ -429,95 +431,22 @@ Verify that this playbook is completed by navigate back to the Filebeat installa
 ---
  
 ### Using the Playbook
-In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
-
-<details>
-<summary> <b> Click here to view Using the Playbook. </b> </summary>
-
----
-
-First, I SSH into the control node and follow the steps below:
-
-- Copy the playbook files to the Ansible control node.
-- Update the "hosts" file to include the groups of hosts representing the targeted servers to run the playbooks on.
-- Run the playbooks, and navigate to the ELK server to check that the installation worked as expected.
-
-So, first I connect to my Jump Box using the following command to SSH into the box:
-
-```bash
-ssh sysadmin@168.61.162.23
-```
-
-![SSH into ump box](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/SSH_into_Jump_Box.png)
-
-Then I run the following command to start and launch my Ansible docker container (i.e., the Ansible Control Node):
-
-```bash
-sudo docker start goofy_wright
-```
-and
-
-```bash
-sudo docker attach goofy_wright 
-```
-
-Note: Your container will have a different name.
-
-![Start and launch ansible container](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Start_launch_ansible.png)
-
-Next, I run the playbooks.
-
-First I run my ELK playbook to deploy my ELK server:
-
-```bash
-ansible-playbook install_elk.yml
-```
-
-Then I run the Filebeat and Metricbeat playbooks to install the agents on my web servers (Web-1, Web-2):
-
-```bash
-ansible-playbook install_filebeat.yml
-```
-```bash
-ansible-playbook install_metricbeat.yml
-```
-
-
-To verify that my ELK server was successfully deployed, I SSH into my ELK server and run the following command:
-
-```bash
-curl http://localhost:5601/app/kibana
-```
-
-
-If the server was successfully installed and deployed I should see the following HTML code output in the terminal:
-
-![confirm elk server running via localhost](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/confirm_ELK_server_running_localhost.png)
-
-You can also use your web browser to confirm that the ELK server is up and running by opening a web browser page and entering the public ip address to access Kibana's web interface:
-
-http://40.79.255.121:5601/app/kibana
-
-If the server is up and functioning, you should be able to access the page below:
-
-![confirm elk running via public ip](https://github.com/Sk3llington/Project1-UCLA-Cyber-Security/blob/main/Images/confirm_ELK_server_running_public_ip.png)
 
 Next, I want to verify that `filebeat` and `metricbeat` are actually collecting the data they are supposed to and that my deployment is fully functioning.
 
 To do so, I have implemented 3 tasks:
 
-
 1. Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
-
-
 2. Generate a high amount of CPU usage on my web servers and verify that Kibana picks up this data.
-
-
 3. Generate a high amount of web requests to my web servers and make sure that Kibana is picking them up.
+	
+<details>
+<summary> <b> Click here to view Using the Playbook. </b> </summary>
+
+---
 
 
-* Generating a high amount of failed SSH login attempts:
-
+#### Generating a high amount of failed SSH login attempts:
 
 To generate these attempts I intentionally tried to connect to my Web-1 web server from the Jump Box instead of connecting from my Ansible container in order to generate failed attempts (the server can't verify my private key outside of the container). All ELK Stack scripts refer to [Elk_Stack_scripts.sh](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Linux/Elk_Stack_scripts.sh)
 
