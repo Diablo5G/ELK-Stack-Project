@@ -233,14 +233,10 @@ Go to Network Security Group to config your host IP to Kibana as follow
 
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
-
-
- 
-
+</details>
 
 ---
 
- 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
@@ -256,11 +252,12 @@ These Beats allow us to collect the following information from each machine:
 
 `Filebeat`: Filebeat detects changes to the filesystem. I use it to collect system logs and more specifically, I use it to detect SSH login attempts and failed sudo escalations.
 
+
 <details>
 <summary> <b> Click here to view Target Machines & Beats. </b> </summary>
 
 ---
- 
+
 Filebeat playbook I used below:
 
 ```yaml
@@ -617,11 +614,7 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
 
-
----
-
-
----
+</details>
 
 SSH into the control node and follow the steps below:
 
