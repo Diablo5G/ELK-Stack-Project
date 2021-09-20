@@ -104,6 +104,8 @@ We will configure an ELK server within virtual network. Specifically,
 - Created an Ansible play to install and configure an ELK instance.
 - Restricted access to the new server.
 
+##### Deployed a new VM on your virtual network. 
+ 
 1. Create a new vNet located in the same resource group you have been using. 
 - Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
 - In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If your network is different (10.2.0.0 or 10.3.0.0) it is ok as long as you accept the default settings. Azure automatically creates a network that will work.
