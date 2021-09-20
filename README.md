@@ -83,11 +83,11 @@ A summary of the access policies in place can be found in the table below.
 | DVWA 1   | No                  |  10.0.0.1-254        |
 | DVWA 2   | No                  |  10.0.0.1-254        |
 
- 
-<details>
-<summary> <b> Click here to view ELK Configuration. </b> </summary>
 
+ 
 ---
+
+
 ### ELK Configuration
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
@@ -95,6 +95,11 @@ Ansible was used to automate configuration of the ELK server. No configuration w
 What is the main advantage of automating configuration with Ansible?
 - Ansible is focusing on bringing a server to a certain state of operation.
 
+<details>
+<summary> <b> Click here to view ELK Configuration. </b> </summary>
+
+---
+ 
 The playbook implements the following tasks:
 
 ```yaml
@@ -231,9 +236,10 @@ Go to Network Security Group to config your host IP to Kibana as follow
 
 
  
-<details>
+
 
 ---
+
  
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -328,9 +334,9 @@ Metricbeat playbook I used below:
       enabled: yes
 ```
  
-<details>
 
 ---
+ 
  
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
@@ -611,11 +617,12 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
 
-</details>
 
 ---
 
-######################
+
+---
+
 SSH into the control node and follow the steps below:
 
 Copy the playbook file to the Ansible container.
@@ -628,4 +635,6 @@ install-elk.yml; /etc/ansible/ on the Ansible container
 Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 /ect/ansible/hosts file; the groups within the host file are called when running the playbooks. The 'elk' group is called to install the ELK server on while the 'webserver' group is called to install Filebeat
 Which URL do you navigate to in order to check that the ELK server is running? -http://40.122.109.116:5601/app/kibana
-######################
+
+---
+
