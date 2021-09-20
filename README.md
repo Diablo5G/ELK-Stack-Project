@@ -612,9 +612,10 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
 
 </details>
+
 ---
 
-#SSH into the control node and follow the steps below:
+# SSH into the control node and follow the steps below:
 
 Copy the playbook file to the Ansible container.
 Update the hosts file to include the elk host group and, in that group, the ELKStack-1 VM IP address
