@@ -115,12 +115,12 @@ We will configure an ELK server within virtual network. Specifically,
 ![Create vNet_2](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
 
 2. Create a Peer connection between your vNets. This will allow traffic to pass between your vNets and regions. This peer connection will make both a connection from your first vNet to your Second vNet And a reverse connection from your second vNet back to your first vNet. This will allow traffic to pass in both directions.
-- Navigate to 'Virtual Network' in the Azure Portal.
+- Navigate to `Virtual Network` in the Azure Portal.
 - Select your new vNet to view it's details.
-- Under 'Settings' on the left side, select 'Peerings'.
+- Under `Settings` on the left side, select `Peerings`.
 - Click the + Add button to create a new Peering.
 - A unique name of the connection from your new vNet to your old vNet such as depicted example below.
-- Choose your original RedTeam vNet in the dropdown labeled 'Virtual Network'.
+- Choose your original RedTeam vNet in the dropdown labeled `Virtual Network`.
 - Leave all other settings at their defaults.
  
 ![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
@@ -130,7 +130,7 @@ We will configure an ELK server within virtual network. Specifically,
 3. Create a new Ubuntu VM in your virtual network with the following configurations:
 - The VM must have a public IP address.
 - The VM must be added to the new region in which you created your new vNet. You want to make sure you select your new vNEt and allow a new basic Security Group to be created for this VM.
-- The VM must use the same SSH keys as your WebVM's. This should be the ssh keys that were created on the Ansible container that's running on your jump box.
+- The VM must use the same SSH keys as your WebserverVM's. This should be the ssh keys that were created on the Ansible container that's running on your jump box.
 - After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on your jump box VM.
 
    - ```bash
@@ -149,7 +149,7 @@ We will configure an ELK server within virtual network. Specifically,
 ![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
  
 - Copy the SSH key from the Ansible container on your jump box:
-   - RUN 'cd .ssh' 'ls' 'cat id_rsa.pub' Configure a new VM using that SSH key.
+   - RUN `cat id_rsa.pub` Configure a new VM using that SSH key.
  
 ![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
  
@@ -160,11 +160,11 @@ In this step, you had to:
 - Add your new VM to the Ansible hosts file.
 - Create a new Ansible playbook to use for your new ELK virtual machine.
 - From your Ansible container, add the new VM to Ansible's hosts file.
-   - RUN 'nano /etc/ansible/hosts' and put your IP with 'ansible_python_interpreter=/usr/bin/python3'
+   - RUN `nano /etc/ansible/hosts` and put your IP with `ansible_python_interpreter=/usr/bin/python3`
 
 ![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ConfigELK.png)  
 
-- In the below play, representing the header of the YAML file, I defined the title of my playbook based on the playbook's main goal by setting the keyword 'name:' to: "Configure Elk VM with Docker". 
+- In the below play, representing the header of the YAML file, I defined the title of my playbook based on the playbook's main goal by setting the keyword 'name:' to: "Configure Elk VM with Docker". Next, I defined the user account for the SSH connection, by setting the keyword 'remote_user:' to "sysadmin" then activated privilege escalation by setting the keyword 'become:' to "true". 
  
  The playbook implements the following tasks:
 
@@ -176,10 +176,9 @@ In this step, you had to:
   become: true
   tasks:
 ```
+ 
+In this play, the ansible package manager module is tasked with installing docker.io. The keyword 'update_cache:' is set to "yes" to download package information from all configured sources and their dependencies prior to installing docker, it is necessary to successfully install docker in this case. Next the keyword 'state:' is set to "present" to verify that the package is installed.
 
-Next I defined the user account for the SSH connection, i.e., Web_1, by setting the keyword 'remote_user:' to "Web_1".
-Next I activated privilege escalation by setting the keyword 'become:' to "true". 
-Following the keyword 'tasks:', the second play is defined below.
 
 ```yaml
      # Use apt module
@@ -190,7 +189,8 @@ Following the keyword 'tasks:', the second play is defined below.
         state: present
 ```
 
-In this play, the ansible package manager module is tasked with installing docker.io. The keyword 'update_cache:' is set to "yes" to download package information from all configured sources and their dependencies prior to installing docker, it is necessary to successfully install docker in this case. Next the keyword 'state:' is set to "present" to verify that the package is installed.
+In this play, the ansible package manager module is tasked with installing  'pip3', a version of the 'pip installer' which is a standard package manager used to install and maintain packages for Python.
+The keyword 'force_apt_get:' is set to "yes" to force usage of apt-get instead of aptitude. The keyword 'state:' is set to "present" to verify that the package is installed.
 
 ```yaml
       # Use apt module
@@ -201,8 +201,7 @@ In this play, the ansible package manager module is tasked with installing docke
         state: present
 ```
 
-In this play, the ansible package manager module is tasked with installing  'pip3', a version of the 'pip installer' which is a standard package manager used to install and maintain packages for Python.
-The keyword 'force_apt_get:' is set to "yes" to force usage of apt-get instead of aptitude. The keyword 'state:' is set to "present" to verify that the package is installed.
+In this play the pip installer is used to install docker and also verify afterwards that docker is installed ('state: present').
 
 ```yaml
       # Use pip module
@@ -212,7 +211,7 @@ The keyword 'force_apt_get:' is set to "yes" to force usage of apt-get instead o
         state: present
 ```
 
-In this play the pip installer is used to install docker and also verify afterwards that docker is installed ('state: present').
+In this play, the ansible sysctl module configures the target virtual machine (i.e., the Elk server VM) to use more memory. On newer version of Elasticsearch, the max virtual memory areas is likely to be too low by default (ie., 65530) and will result in the following error: "elasticsearch | max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]", thus requiring the increase of vm.max_map_count to at least 262144 using the sysctl module (keyword 'value:' set to "262144"). The keyword 'state:' is set to "present" to verify that the change was applied. The sysctl command is used to modify Linux kernel variables at runtime, to apply the changes to the virtual memory variables, the new variables need to be reloaded so the keyword 'reload:' is set to "yes" (this is also necessary in case the VM has been restarted).
 
 ```yaml
       # Use sysctl module
@@ -224,7 +223,8 @@ In this play the pip installer is used to install docker and also verify afterwa
         reload: yes
 ```
 
-In this play, the ansible sysctl module configures the target virtual machine (i.e., the Elk server VM) to use more memory. On newer version of Elasticsearch, the max virtual memory areas is likely to be too low by default (ie., 65530) and will result in the following error: "elasticsearch | max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]", thus requiring the increase of vm.max_map_count to at least 262144 using the sysctl module (keyword 'value:' set to "262144"). The keyword 'state:' is set to "present" to verify that the change was applied. The sysctl command is used to modify Linux kernel variables at runtime, to apply the changes to the virtual memory variables, the new variables need to be reloaded so the keyword 'reload:' is set to "yes" (this is also necessary in case the VM has been restarted).
+In this play, the ansible docker_container module is used to download and launch our Elk container. The container is pulled from the docker hub repository. The keyword 'image:' is set with the value "sebp/elk:761", "sebp" is the creator of the container (i.e., Sebastien Pujadas). "elk" is the container and "761" is the version of the container. The keyword 'state:' is set to "started" to start the container upon creation. The keyword 'restart_policy:' is set to "always" and will ensure that the container restarts if you restart your web vm. Without it, you will have to restart your container when you restart the machine.
+The keyword 'published_ports:' is set with the 3 ports that are used by our Elastic stack configuration, i.e., "5601" is the port used by Kibana, "9200" is the port used by Elasticsearch for requests by default and "5400" is the default port Logstash listens on for incoming Beats connections (we will go over the Beats we installed in the following section "Target Machines & Beats").
 
 ```yaml
       # Use docker_container module
@@ -240,8 +240,7 @@ In this play, the ansible sysctl module configures the target virtual machine (i
           - 5044:5044
 ```
 
-In this play, the ansible docker_container module is used to download and launch our Elk container. The container is pulled from the docker hub repository. The keyword 'image:' is set with the value "sebp/elk:761", "sebp" is the creator of the container (i.e., Sebastien Pujadas). "elk" is the container and "761" is the version of the container. The keyword 'state:' is set to "started" to start the container upon creation. The keyword 'restart_policy:' is set to "always" and will ensure that the container restarts if you restart your web vm. Without it, you will have to restart your container when you restart the machine.
-The keyword 'published_ports:' is set with the 3 ports that are used by our Elastic stack configuration, i.e., "5601" is the port used by Kibana, "9200" is the port used by Elasticsearch for requests by default and "5400" is the default port Logstash listens on for incoming Beats connections (we will go over the Beats we installed in the following section "Target Machines & Beats").
+In this play, the ansible systemd module is used to start docker on boot, setting the keyword 'enabled:' to "yes".
 
 ```yaml
       # Use systemd module
@@ -251,9 +250,7 @@ The keyword 'published_ports:' is set with the 3 ports that are used by our Elas
         enabled: yes
 ```
 
-In this play, the ansible systemd module is used to start docker on boot, setting the keyword 'enabled:' to "yes".
-
-Now we can start launching and exposing the container by run
+ Now we can start launching and exposing the container by run
 
 ```bash
 ansible-playbook install-elk.yml
