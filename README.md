@@ -457,35 +457,35 @@ To do so I used the following short script to automate 1000 failed SSH login att
 for i in {1..1000}; do ssh Web_1@10.0.0.5; done
 ```
 
-![ssh failed attempts](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/f927b7cdbd50c0d4b7830f1839658fcfeaf2a96d/Images/ssh_failed_attempts.png)
+![ssh failed attempts](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ssh%20failed%20attempts.png)
 
 
 Next I check Kibana to see if the failed attempts were logged:
 
 
-![filebeat failed ssh attempts](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/f927b7cdbd50c0d4b7830f1839658fcfeaf2a96d/Images/filebeat_failed_ssh_attempts.png)
+![filebeat failed ssh attempts](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/filebeat%20failed%20ssh%20attempts.png)
 
 I can see that all the failed attempts were detected and sent to Kibana.
 
-Now Let's breakdown the syntax of my previous short script:
+- Now Let's breakdown the syntax of my previous short script:
 
-`for` begins the `for` loop.
+   - `for` begins the `for` loop.
 
-`i in` creates a variable named `i` that will hold each number `in` our list.
+   - `i in` creates a variable named `i` that will hold each number `in` our list.
 
-`{1..1000}` creates a list of 1000 numbers, each of which will be given to our `i` variable.
+   - `{1..1000}` creates a list of 1000 numbers, each of which will be given to our `i` variable.
 
-`;` separates the portions of our `for` loop when written on one line.
+   - `;` separates the portions of our `for` loop when written on one line.
 
-`do` indicates the action taken by each loop.
+   - `do` indicates the action taken by each loop.
 
-`ssh sysadmin@10.0.0.5` is the command run by `do`.
+   - `ssh sysadmin@10.0.0.5` is the command run by `do`.
 
-`;` separates the portions of our for loop when it's written on one line.
+   - `;` separates the portions of our for loop when it's written on one line.
 
-`done` closes the `for` loop.
+   - `done` closes the `for` loop.
 
-Now I can run the same short script command with a few modifications, to test that `filebeat` is logging all failed attempts on all web servers where `filebeat` was deployed.
+- Now I can run the same short script command with a few modifications, to test that `filebeat` is logging all failed attempts on all web servers where `filebeat` was deployed.
 
 I want to run a command that will attempt to SSH into multiple web servers at the same time and continue forever until I stop it:
 
@@ -493,22 +493,21 @@ I want to run a command that will attempt to SSH into multiple web servers at th
 while true; do for i in {5..6}; do ssh Web_1@10.0.0.$i; done
 ```
 
-Now let's breakdown the syntax of my previous short script:
+- Now let's breakdown the syntax of my previous short script:
 
+   - `while` begins the `while` loop.
 
-`while` begins the `while` loop.
+   - `true` will always be equal to `true` so this loop will never stop, unless you force quit it.
 
-`true` will always be equal to `true` so this loop will never stop, unless you force quit it.
+   - `;` separates the portions of our `while` loop when it's written on one line.
 
-`;` separates the portions of our `while` loop when it's written on one line.
+   - `do` indicates the action taken by each loop.
 
-`do` indicates the action taken by each loop.
+   - `i in` creates a variable named `i` that will hold each number in our list.
 
-`i in` creates a variable named `i` that will hold each number in our list.
+   - `{5..6}` creates a list of numbers (5 and 6), each of which will be given to our `i` variable.
 
-`{5..6}` creates a list of numbers (5 and 6), each of which will be given to our `i` variable.
-
-`ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6 (Web-1, Web-2).
+   - `ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6 (Web-1, Web-2).
 
 
 Next, I want to confirm that `metricbeat` is functioning. To do so I will run a linux stress test.
