@@ -138,18 +138,15 @@ We will configure an ELK server within virtual network. Specifically,
         sudo docker container list -a
      ``` 
    - ```bash
-        sudo docker start goofy_wright
-     ```  
-   - ```bash
-        sudo docker attach goofy_wright
+        sudo docker start goofy_wright && sudo docker attach goofy_wright
      ``` 
  
-![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
+![connect_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/connect_on_newVM.png)  
  
 - Copy the SSH key from the Ansible container on your jump box:
    - RUN `cat id_rsa.pub` Configure a new VM using that SSH key.
  
-![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
+![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/id_rsa.pub_on_newVM.png) 
  
 
 #### Created an Ansible play to install and configure an ELK instance.
