@@ -298,15 +298,15 @@ I have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
 
-These Beats allow us to collect the following information from each machine:
-
-`Filebeat`: Filebeat detects changes to the filesystem. I use it to collect system logs and more specifically, I use it to detect SSH login attempts and failed sudo escalations.
-
-
 <details>
 <summary> <b> Click here to view Target Machines & Beats. </b> </summary>
 
 ---
+
+	
+These Beats allow us to collect the following information from each machine:
+
+`Filebeat`: Filebeat detects changes to the filesystem. I use it to collect system logs and more specifically, I use it to detect SSH login attempts and failed sudo escalations.
 
 We will create a [filebeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/filebeat-config.yml) and [metricbeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/metricbeat-config.yml) configuration files, after which we will create the Ansible playbook files for both of them.
 
@@ -369,6 +369,16 @@ RUN `nano filebeat-playbook.yml` to enable the filebeat service on boot by Fileb
 
 ![Filebeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_result.png)  
 
+Verify that your playbook is completed by navigate back to the Filebeat installation page on the ELK server GUI
+
+![Filebeat_playbook_verify](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_verify.png)
+	
+![Filebeat_playbook_verify1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_verify1.png)
+	
+	
+	
+	
+	
 `Metricbeat`: Metricbeat detects changes in system metrics, such as CPU usage and memory usage.
 
 Metricbeat playbook I used below:
