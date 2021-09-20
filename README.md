@@ -308,7 +308,26 @@ These Beats allow us to collect the following information from each machine:
 
 ---
 
-Filebeat playbook I used below:
+We will create a [filebeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/filebeat-config.yml) and [metricbeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/metricbeat-config.yml) configuration files, after which we will create the Ansible playbook files for both of them.
+
+Once you have this file on your Ansible container, edit it as specified:
+- The username is elastic and the password is changeme.
+- Scroll to line #1106 and replace the IP address with the IP address of your ELK machine.
+output.elasticsearch:
+hosts: ["10.1.0.4:9200"]
+username: "elastic"
+password: "changeme"
+- Scroll to line #1806 and replace the IP address with the IP address of your ELK machine.
+	setup.kibana:
+host: "10.1.0.4:5601"
+- Save both files filebeat-config.yml and metricbeat-config.yml into `/etc/ansible/files/`
+
+![files_FMconfig](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/files_FMconfig.png) 
+ 
+ 
+Next, create a new playbook that installs Filebeat & Metricbeat, and then create a playbook file, `filebeat-playbook.yml` & `metricbeat-playbook.yml`
+
+RUN `nano filebeat-playbook.yml` to enable the filebeat service on boot by Filebeat playbook template below:
 
 ```yaml
 ---
@@ -341,8 +360,14 @@ Filebeat playbook I used below:
     systemd:
       name: filebeat
       enabled: yes
+
 ```
 
+![Filebeat_playbook](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook.png) 
+ 
+- RUN `ansible-playbook filebeat-playbook.yml`
+
+![Filebeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_result.png)  
 
 `Metricbeat`: Metricbeat detects changes in system metrics, such as CPU usage and memory usage.
 
@@ -380,6 +405,8 @@ Metricbeat playbook I used below:
       name: metricbeat
       enabled: yes
 ```
+
+![Metricbeat_playbook](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Access_Kibana.png)  
  
 </details>
 
