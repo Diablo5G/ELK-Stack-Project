@@ -104,7 +104,7 @@ We will configure an ELK server within virtual network. Specifically,
 - Created an Ansible play to install and configure an ELK instance.
 - Restricted access to the new server.
 
-##### Deployed a new VM on your virtual network. 
+#### Deployed a new VM on your virtual network. 
  
 1. Create a new vNet located in the same resource group you have been using. 
 - Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
@@ -134,7 +134,7 @@ We will configure an ELK server within virtual network. Specifically,
 - After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on your jump box VM.
 
    - ```bash
-        ssh sysadmin@jump-box-provisioner-publicIP
+        ssh sysadmin@<jump-box-provisioner-publicIP>
      ``` 
    - ```bash
         sudo docker container list -a
@@ -148,7 +148,10 @@ We will configure an ELK server within virtual network. Specifically,
  
 ![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
  
-
+- Copy the SSH key from the Ansible container on your jump box:
+   - RUN 'cd .ssh' 'ls' 'cat id_rsa.pub' Configure a new VM using that SSH key.
+ 
+![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
  
  
  
