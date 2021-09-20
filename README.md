@@ -374,14 +374,11 @@ Verify that your playbook is completed by navigate back to the Filebeat installa
 ![Filebeat_playbook_verify](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_verify.png)
 	
 ![Filebeat_playbook_verify1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_verify1.png)
-	
-	
-	
-	
+		
 	
 `Metricbeat`: Metricbeat detects changes in system metrics, such as CPU usage and memory usage.
 
-Metricbeat playbook I used below:
+RUN `nano metricbeat-playbook.yml` to enable the metricbeat service on boot by Metricbeat playbook template below:
 
 ```yaml
 ---
@@ -416,7 +413,16 @@ Metricbeat playbook I used below:
       enabled: yes
 ```
 
-![Metricbeat_playbook](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Access_Kibana.png)  
+![Metricbeat_playbook](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Metricbeat_playbook.png)  
+ 
+- RUN `ansible-playbook metricbeat-playbook.yml`
+
+![Metricbeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Metricbeat_playbook_result.png)  
+
+Verify that this playbook is completed by navigate back to the Filebeat installation page on the ELK server GUI
+
+![Metricbeat_playbook_verify](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Metricbeat_playbook_verify.png)
+
  
 </details>
 
