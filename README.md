@@ -322,13 +322,12 @@ password: "changeme"
 host: "10.1.0.4:5601"
 - Save both files filebeat-config.yml and metricbeat-config.yml into `/etc/ansible/files/`
 
-![files_FMconfig](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Access_Kibana.png) 
+![files_FMconfig](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/files_FMconfig.png) 
  
  
 Next, create a new playbook that installs Filebeat & Metricbeat, and then create a playbook file, `filebeat-playbook.yml` & `metricbeat-playbook.yml`
 
-RUN `cd ..` `touch filebeat-playbook.yml` `nano filebeat-playbook.yml`
-Enable the filebeat service on boot by Filebeat playbook template below:
+RUN `nano filebeat-playbook.yml` to enable the filebeat service on boot by Filebeat playbook template below:
 
 ```yaml
 ---
@@ -363,10 +362,12 @@ Enable the filebeat service on boot by Filebeat playbook template below:
       enabled: yes
 
 ```
+
+![Filebeat_playbook](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook.png) 
  
 - RUN `ansible-playbook filebeat-playbook.yml`
 
-![Filebeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Access_Kibana.png)  
+![Filebeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_result.png)  
 
 `Metricbeat`: Metricbeat detects changes in system metrics, such as CPU usage and memory usage.
 
