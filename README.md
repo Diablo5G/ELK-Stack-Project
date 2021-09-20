@@ -137,12 +137,14 @@ We will configure an ELK server within virtual network. Specifically,
    - ```bash
         sudo docker container list -a
      ``` 
-   - sudo docker start goofy_wright
-   - sudo docker attach goofy_wright
-
-![SSH-Key](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
+   - ```bash
+        sudo docker start goofy_wright
+     ```  
+   - ```bash
+        sudo docker attach goofy_wright
+     ``` 
  
-![id_rsa.pub](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
+![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
  
 
  
