@@ -84,7 +84,11 @@ A summary of the access policies in place can be found in the table below.
 | DVWA 2   | No                  |  10.0.0.1-254        |
 
  
-### Elk Configuration
+<details>
+<summary> <b> Click here to view ELK Configuration. </b> </summary>
+
+---
+### ELK Configuration
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
 
@@ -228,7 +232,10 @@ Go to Network Security Group to config your host IP to Kibana as follow
 
 
 
+<details>
+<summary> <b> Click here to view Target Machines & Beats. </b> </summary>
 
+---
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
