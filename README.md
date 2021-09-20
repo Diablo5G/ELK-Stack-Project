@@ -111,9 +111,19 @@ In this example, that the IP Addressing has automatically created a new network 
  
 ![Create vNet_2](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
 
+2. Create a Peer connection between your vNets. This will allow traffic to pass between your vNets and regions. This peer connection will make both a connection from your first vNet to your Second vNet And a reverse connection from your second vNet back to your first vNet. This will allow traffic to pass in both directions.
+   - Navigate to 'Virtual Network' in the Azure Portal.
+   - Select your new vNet to view it's details.
+   - Under 'Settings' on the left side, select 'Peerings'.
+   - Click the + Add button to create a new Peering.
+   - A unique name of the connection from your new vNet to your old vNet.
+   - Choose your original RedTeam vNet in the dropdown labeled 'Virtual Network'.
+   - Leave all other settings at their defaults.
+ 
+![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
+ 
+![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
 
- 
- 
  
  
  
