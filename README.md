@@ -514,7 +514,7 @@ Now let's breakdown the syntax of my previous short script:
 Next, I want to confirm that `metricbeat` is functioning. To do so I will run a linux stress test.
 
 
-* Generating a high amount of CPU usage on my web servers (Web-1, Web-2) and confirming that Kibana is collecting the data.
+#### Generating a high amount of CPU usage on my web servers (Web-1, Web-2) and confirming that Kibana is collecting the data.
 
 
 1. From my Jump Box, I start my Ansible container with the following command:
@@ -551,7 +551,7 @@ Another view of the CPU usage metrics Kibana collected:
 ![cpu stress test results graph](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/cpu_stress_test_result_graph.png)
 
 
-* Generate a high amount of web requests to my web servers and make sure that Kibana is picking them up.
+#### Generate a high amount of web requests to my web servers and make sure that Kibana is picking them up.
 
 This time I want to generate a high amount of web requests directed to one of my web servers, I will use `wget` to launch a DoS attack.
 
