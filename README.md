@@ -77,7 +77,7 @@ A summary of the access policies in place can be found in the table below.
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump-Box-Provisioner | Yes                 | 47.185.204.83        |
-| ELKServer      | Yes                  |  47.185.204.83 with TCP 5601        |
+| ELKServer      | Yes                  |  47.185.204.83:5601        |
 | DVWA 1   | No                  |  10.0.0.1-254        |
 | DVWA 2   | No                  |  10.0.0.1-254        |
 
@@ -132,7 +132,7 @@ We will configure an ELK server within virtual network. Specifically,
 - After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on your jump box VM.
 
    - ```bash
-        ssh sysadmin@<jump-box-provisioner-publicIP>
+        ssh sysadmin@<jump-box-provisioner>
      ``` 
    - ```bash
         sudo docker container list -a
@@ -146,7 +146,7 @@ We will configure an ELK server within virtual network. Specifically,
 - Copy the SSH key from the Ansible container on your jump box:
    - RUN `cat id_rsa.pub` Configure a new VM using that SSH key.
  
-![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/id_rsa.pub_on_newVM.png) 
+![RSA](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/id_rsa.pub_on_newVM.png) 
  
 
 #### Created an Ansible play to install and configure an ELK instance.
@@ -157,7 +157,7 @@ In this step, you have to:
 - From your Ansible container, add the new VM to Ansible's hosts file.
    - RUN `nano /etc/ansible/hosts` and put your IP with `ansible_python_interpreter=/usr/bin/python3`
 
-![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ConfigELK.png)  
+![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CatHosts.png)  
 
 - In the below play, representing the header of the YAML file, I defined the title of my playbook based on the playbook's main goal by setting the keyword 'name:' to: "Configure Elk VM with Docker". Next, I defined the user account for the SSH connection, by setting the keyword 'remote_user:' to "sysadmin" then activated privilege escalation by setting the keyword 'become:' to "true". 
  
