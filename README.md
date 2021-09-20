@@ -104,8 +104,9 @@ We will configure an ELK server within virtual network. Specifically,
 - Created an Ansible play to install and configure an ELK instance.
 - Restricted access to the new server.
 
-1. Create a new vNet located in the same resource group you have been using. Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
-In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If your network is different (10.2.0.0 or 10.3.0.0) it is ok as long as you accept the default settings. Azure automatically creates a network that will work.
+1. Create a new vNet located in the same resource group you have been using. 
+- Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
+- In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If your network is different (10.2.0.0 or 10.3.0.0) it is ok as long as you accept the default settings. Azure automatically creates a network that will work.
 
 ![Create vNet](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
  
@@ -125,13 +126,25 @@ In this example, that the IP Addressing has automatically created a new network 
 ![Peerings1](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
 
 3. Create a new Ubuntu VM in your virtual network with the following configurations:
-- **IP Address**: The VM must have a public IP address.
-- **Networking**: The VM must be added to the new region in which you created your new vNet. You want to make sure you select your new vNEt and allow a new basic Security Group to be created for this VM.
-- **Access**: The VM must use the same SSH keys as your WebVM's. This should be the ssh keys that were created on the Ansible container that's running on your jump box.
-   - Open a terminal on your computer and SSH into the jump box.
+- The VM must have a public IP address.
+- The VM must be added to the new region in which you created your new vNet. You want to make sure you select your new vNEt and allow a new basic Security Group to be created for this VM.
+- The VM must use the same SSH keys as your WebVM's. This should be the ssh keys that were created on the Ansible container that's running on your jump box.
+- After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on your jump box VM.
 
+   - ```bash
+        ssh sysadmin@jump-box-provisioner-publicIP
+     ``` 
+   - ```bash
+        sudo docker container list -a
+     ``` 
+   - sudo docker start goofy_wright
+   - sudo docker attach goofy_wright
+
+![SSH-Key](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
  
+![id_rsa.pub](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png)  
  
+
  
  
  
@@ -277,10 +290,6 @@ then ```curl http://localhost:5601/app/kibana``` does return HTML.
 The following screenshot displays the result of running `curl` after start ELK container
 
 ![Docker curl output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CurlResult.png)
- 
-⚠️ Checkpoint ⚠️
- + ✔️ An Ansible playbook has been created that installs and configures an ELK container.
- + ✔️ The Ansible playbook can be run on the new VM.
 
 This step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
 
