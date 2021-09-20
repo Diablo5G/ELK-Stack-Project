@@ -653,7 +653,7 @@ My Elastic Stack server is now functioning and correctly monitoring my load-bala
 
 ---
 
-## SSH into the control node and follow the steps below:
+### SSH into the control node and follow the steps below:
 
 Copy the playbook file to the Ansible container.
 Update the hosts file to include the elk host group and, in that group, the ELKStack-1 VM IP address
@@ -668,16 +668,15 @@ Which URL do you navigate to in order to check that the ELK server is running? -
 
 ---
 
-## Citation Reference;
+### Citations and References:
 
-#### Resources
+#### General Resources:
 
 - [`elk-docker` Container Documentation](https://elk-docker.readthedocs.io/)
 - [Elastic.co: The Elastic Stack](https://www.elastic.co/elastic-stack)
 - [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
 - [`elk-docker` Image Documentation](https://elk-docker.readthedocs.io/#elasticsearch-logstash-kibana-elk-docker-image-documentation)
 - [Virtual Memory Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/vm-max-map-count.html#vm-max-map-count)
-- ELK Server URL: http://[your.IP]:5601
 - [Docker Commands Cheatsheet](https://phoenixnap.com/kb/list-of-docker-commands-cheat-sheet)
 
 #### Azure Documentation:
@@ -685,6 +684,11 @@ Which URL do you navigate to in order to check that the ELK server is running? -
 - Azure's page on peer networks: [Network-Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)
 - Peer networking in Azure How-To: [Global vNet Peering](https://azure.microsoft.com/en-ca/blog/global-vnet-peering-now-generally-available/)
 - Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
+
+#### credits to friends and acquaintances:
+- © 2020 Trilogy Education Services, a 2U, Inc., Instructor and TAs. 
+- © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
+- Reserect Team, I believe we all work and learn together.
 
 ---
 
