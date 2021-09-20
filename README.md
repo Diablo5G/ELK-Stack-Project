@@ -7,11 +7,11 @@ The files in this repository were used to configure the network depicted below.
  
 These files have been tested and used to generate an automated ELK Stack Deployment on Azure. They can be used to either recreate the entire deployment figured below. Otherwise, select portions of the YAML files may be used to install only certain pieces of it, for example, Filebeat and Metricbeat.
 
-  - install-elk.yml
-  - filebeat-config.yml
-  - filebeat-playbook.yml
-  - metricbeat-config.yml
-  - metricbeat-playbook.yml
+  - [install-elk.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/install-elk.yml)
+  - [filebeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/filebeat-config.yml)
+  - [filebeat-playbook.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/filebeat-playbook.yml)
+  - [metricbeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/metricbeat-config.yml)
+  - [metricbeat-playbook.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/metricbeat-playbook.yml)
  
 This document contains the following details:
 - Description of the Topology
@@ -156,7 +156,7 @@ We will configure an ELK server within virtual network. Specifically,
 
 #### Created an Ansible play to install and configure an ELK instance.
 
-In this step, you had to:
+In this step, you have to:
 - Add your new VM to the Ansible hosts file.
 - Create a new Ansible playbook to use for your new ELK virtual machine.
 - From your Ansible container, add the new VM to Ansible's hosts file.
@@ -282,6 +282,10 @@ This step is to restrict access to the ELK VM using Azure's network security gro
 Go to Network Security Group to config your host IP to Kibana as follow
 
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
+
+Then try to access web browser to http://your.ELK-VM.External.IP:5601/app/kibana
+ 
+![Access_Kibana](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
 </details>
 
@@ -476,9 +480,9 @@ To do so, I have implemented 3 tasks:
 * Generating a high amount of failed SSH login attempts:
 
 
-To generate these attempts I intentionally tried to connect to my Web-1 web server from the Jump Box instead of connecting from my Ansible container in order to generate failed attempts (the server can't verify my private key outside of the container).
+To generate these attempts I intentionally tried to connect to my Web-1 web server from the Jump Box instead of connecting from my Ansible container in order to generate failed attempts (the server can't verify my private key outside of the container). All ELK Stack scripts refer to [Elk_Stack_scripts.sh](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Linux/Elk_Stack_scripts.sh)
 
-To do so I used the following short script to automate 1000 failed SSH login attempts:
+To do so I used the following short script to automate 1000 failed SSH login attempts: 
 
 
 ```bash
@@ -518,7 +522,7 @@ Now I can run the same short script command with a few modifications, to test th
 I want to run a command that will attempt to SSH into multiple web servers at the same time and continue forever until I stop it:
 
 ```bash
-while true; do for i in {5..7}; do ssh Web_1@10.0.0.$i; done
+while true; do for i in {5..6}; do ssh Web_1@10.0.0.$i; done
 ```
 
 Now let's breakdown the syntax of my previous short script:
@@ -534,9 +538,9 @@ Now let's breakdown the syntax of my previous short script:
 
 `i in` creates a variable named `i` that will hold each number in our list.
 
-`{5..7}` creates a list of numbers (5, 6 and 7), each of which will be given to our `i` variable.
+`{5..6}` creates a list of numbers (5 and 6), each of which will be given to our `i` variable.
 
-`ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6, 10.0.0.7 (Web-1, Web-2).
+`ssh sysadmin@10.0.0.$i` is the command run by `do`. It is passing in the `$i` variable so the `wget` command will be run on each server, i.e., 10.0.0.5, 10.0.0.6 (Web-1, Web-2).
 
 
 Next, I want to confirm that `metricbeat` is functioning. To do so I will run a linux stress test.
@@ -548,7 +552,7 @@ Next, I want to confirm that `metricbeat` is functioning. To do so I will run a 
 1. From my Jump Box, I start my Ansible container with the following command:
 
 ```bash
-sudo docker start hopeful_lalande && sudo docker attach hopeful_lalande
+sudo docker start goofy_wright && sudo docker attach goofy_wright
 ```
 
 2. I SSH from my Ansible container to one of my web server.
@@ -605,7 +609,7 @@ Output of the command:
 
 
 ```bash
-azadmin@Jump-Box-Provisioner:~$ ls 
+sysadmin@Jump-Box-Provisioner:~$ ls 
 index.html
 ```
 
@@ -629,7 +633,7 @@ After stopping the `wget` command, I can see that thousands of index.html files 
 ![index html files](https://github.com/Sk3llington/Project-1-UCLA-Cyber-Security/blob/9bcdcb0cdda628a18aad96fd07d56585c2b7a0cc/Images/index_html_files.png)
 
 
- I can use the following command to clean that up:
+I can use the following command to clean that up:
 
 ```bash
 rm *
@@ -652,10 +656,10 @@ I use the following command to do that:
 while true; do wget 10.0.0.5 -O /dev/null; done
 ```
 
-Now, if I want to perform the `wget` DoS request on all my web servers, I can use the previous command I used to generate failed SSH login attempts on all my web servers, but this time I will tweak the command to send `wget` requests to all 3 web servers:
+Now, if I want to perform the `wget` DoS request on all my web servers, I can use the previous command I used to generate failed SSH login attempts on all my web servers, but this time I will tweak the command to send `wget` requests to all webservers:
 
 ```bash
-while true; do for i in {5..7}; do wget -O /dev/null 10.0.0.$i; done
+while true; do for i in {5..6}; do wget -O /dev/null 10.0.0.$i; done
 ```
 
 Note that I need to press CTRL + C to stop the `wget` requests since I am using the `while` loop.
