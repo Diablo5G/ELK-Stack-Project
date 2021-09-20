@@ -234,6 +234,7 @@ Go to Network Security Group to config your host IP to Kibana as follow
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
 </details>
+---
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -329,7 +330,8 @@ Metricbeat playbook I used below:
       enabled: yes
 ```
  
-<details>
+</details>
+---
  
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
@@ -339,18 +341,17 @@ In order to use the playbooks, you will need to have an Ansible control node alr
 
 ---
 
- First, I SSH into the control node and follow the steps below:
+First, I SSH into the control node and follow the steps below:
 
 - Copy the playbook files to the Ansible control node.
 - Update the "hosts" file to include the groups of hosts representing the targeted servers to run the playbooks on.
 - Run the playbooks, and navigate to the ELK server to check that the installation worked as expected.
 
-So first I connect to my Jump Box using the following command to SSH into the box:
+So, first I connect to my Jump Box using the following command to SSH into the box:
 
 ```bash
 ssh sysadmin@168.61.162.23
 ```
-
 
 ![SSH into ump box](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/SSH_into_Jump_Box.png)
 
@@ -611,8 +612,9 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
 
 </details>
+---
 
-SSH into the control node and follow the steps below:
+#SSH into the control node and follow the steps below:
 
 Copy the playbook file to the Ansible container.
 Update the hosts file to include the elk host group and, in that group, the ELKStack-1 VM IP address
