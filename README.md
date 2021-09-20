@@ -672,7 +672,7 @@ Which URL do you navigate to in order to check that the ELK server is running? -
 
 #### General Resources:
 
-- [`elk-docker` Container Documentation](https://elk-docker.readthedocs.io/)
+  > - [`elk-docker` Container Documentation](https://elk-docker.readthedocs.io/)
 - [Elastic.co: The Elastic Stack](https://www.elastic.co/elastic-stack)
 - [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
 - [`elk-docker` Image Documentation](https://elk-docker.readthedocs.io/#elasticsearch-logstash-kibana-elk-docker-image-documentation)
@@ -685,8 +685,8 @@ Which URL do you navigate to in order to check that the ELK server is running? -
 - Peer networking in Azure How-To: [Global vNet Peering](https://azure.microsoft.com/en-ca/blog/global-vnet-peering-now-generally-available/)
 - Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
-#### credits to friends and acquaintances:
-- © 2020 Trilogy Education Services, a 2U, Inc., Instructor and TAs. 
+#### Credits to friends and acquaintances:
+- © Trilogy Education Services, a 2U, Inc., Instructor and TAs. 
 - © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
 - Reserect Team, I believe we all work and learn together.
 
