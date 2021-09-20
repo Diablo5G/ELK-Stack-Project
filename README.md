@@ -460,7 +460,7 @@ for i in {1..1000}; do ssh Web_1@10.0.0.5; done
 ![ssh failed attempts](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ssh%20failed%20attempts.png)
 
 
-Next I check Kibana to see if the failed attempts were logged:
+Next We check Kibana to see if the failed attempts were logged:
 
 
 ![filebeat failed ssh attempts](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/filebeat%20failed%20ssh%20attempts.png)
@@ -528,13 +528,13 @@ sudo docker start goofy_wright && sudo docker attach goofy_wright
 ssh sysadmin@10.0.0.5
 ```
 
-3. I install the `stress` module with the following command:
+3. Install the `stress` module with the following command:
 
 ```bash
 sudo apt install stress
 ```
 
-4. I run the service with the following command and let the stress test run for a few minutes:
+4. Run the service with the following command and let the stress test run for a few minutes:
 
 ```bash
 sudo stress --cpu 1
@@ -562,7 +562,7 @@ This time we will generate a high amount of web requests directed to one of my w
         ssh sysadmin@<jump-box-provisioner>
      ``` 
 
-2. I need to add a new firewall rule to allow my Jump Box (10.0.0.4) to connect to my web servers over HTTP on port 80. To do so, I add a new Inbound Security Rule to Red-Team Network Security Group:
+2. We need to add a new firewall rule to allow my Jump Box (10.0.0.4) to connect to my web servers over HTTP on port 80. To do so, I add a new Inbound Security Rule to Red-Team Network Security Group:
 
 ![jump to http to webservers](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/jump%20to%20http%20to%20webservers.png)
 
@@ -586,7 +586,7 @@ Output of the command:
         index.html
      ```
 
-5. Next, I run the `wget` command in a loop to generate a very high number of web requests, I will use the `while` loop:
+5. Next, run the `wget` command in a loop to generate a very high number of web requests, I will use the `while` loop:
 
    - ```bash
         while true; do wget 10.0.0.5; done
@@ -631,7 +631,7 @@ Now, if I want to perform the `wget` DoS request on all my web servers, I can us
 while true; do for i in {5..6}; do wget -O /dev/null 10.0.0.$i; done
 ```
 
-Note that I need to press CTRL + C to stop the `wget` requests since I am using the `while` loop.
+Note that we need to press CTRL + C to stop the `wget` requests since I am using the `while` loop.
 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
