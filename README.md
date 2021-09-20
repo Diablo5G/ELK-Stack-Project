@@ -100,12 +100,13 @@ Ansible was used to automate configuration of the ELK server. No configuration w
  
 We will configure an ELK server within virtual network. Specifically,
  
-1. Deployed a new VM on your virtual network.
-2. Created an Ansible play to install and configure an ELK instance.
-3. Restricted access to the new server.
+- Deployed a new VM on your virtual network.
+- Created an Ansible play to install and configure an ELK instance.
+- Restricted access to the new server.
 
- 
- 
+1. Create a new vNet located in the same resource group you have been using. Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources.
+
+![Create vNet](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png) 
  
  
 
