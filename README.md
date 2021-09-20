@@ -153,27 +153,18 @@ We will configure an ELK server within virtual network. Specifically,
  
 ![id_rsa.pub_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet_2.png) 
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+#### Created an Ansible play to install and configure an ELK instance.
+
+In this step, you had to:
+- Add your new VM to the Ansible hosts file.
+- Create a new Ansible playbook to use for your new ELK virtual machine.
+- From your Ansible container, add the new VM to Ansible's hosts file.
+   - RUN 'nano /etc/ansible/hosts' and put your IP with 'ansible_python_interpreter=/usr/bin/python3'
+
+![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ConfigELK.png)  
+
+- In the below play, representing the header of the YAML file, I defined the title of my playbook based on the playbook's main goal by setting the keyword 'name:' to: "Configure Elk VM with Docker". 
  
  The playbook implements the following tasks:
 
@@ -186,17 +177,8 @@ We will configure an ELK server within virtual network. Specifically,
   tasks:
 ```
 
-- In the above play, representing the header of the YAML file, I defined the title of my playbook based on the playbook's main goal by setting the keyword 'name:' to: "Configure Elk VM with Docker". 
-
-Next I defined the managed nodes to target, in this case I set the keyword 'hosts:' to "elk", making sure that the playbook is run only on the machines in the "elk" group. 
-To edit groups and add/remove machines from a group, the following inventory file located in /etc/ansible is used (see image below).
-
-![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ConfigELK.png) 
-
 Next I defined the user account for the SSH connection, i.e., Web_1, by setting the keyword 'remote_user:' to "Web_1".
-
 Next I activated privilege escalation by setting the keyword 'become:' to "true". 
-
 Following the keyword 'tasks:', the second play is defined below.
 
 ```yaml
