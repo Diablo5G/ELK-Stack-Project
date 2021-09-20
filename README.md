@@ -156,7 +156,7 @@ We will configure an ELK server within virtual network. Specifically,
 
 #### Created an Ansible play to install and configure an ELK instance.
 
-In this step, you had to:
+In this step, you have to:
 - Add your new VM to the Ansible hosts file.
 - Create a new Ansible playbook to use for your new ELK virtual machine.
 - From your Ansible container, add the new VM to Ansible's hosts file.
@@ -282,6 +282,10 @@ This step is to restrict access to the ELK VM using Azure's network security gro
 Go to Network Security Group to config your host IP to Kibana as follow
 
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
+
+Then try to access web browser to http://your.ELK-VM.External.IP:5601/app/kibana
+ 
+![Access_Kibana](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
 </details>
 
