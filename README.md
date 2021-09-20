@@ -234,6 +234,7 @@ Go to Network Security Group to config your host IP to Kibana as follow
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
 </details>
+
 ---
 
 ### Target Machines & Beats
@@ -331,6 +332,7 @@ Metricbeat playbook I used below:
 ```
  
 </details>
+
 ---
  
 ### Using the Playbook
