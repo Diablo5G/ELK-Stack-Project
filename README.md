@@ -27,29 +27,30 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting inbound access to the network.
 
-What aspect of security do load balancers protect?
+> What aspect of security do load balancers protect?
 - According to [Azure security baseline for Azure Load Balancer](https://bit.ly/3AnSRPV), the load balancer's main purpose is to distribute web traffic across multiple servers. In our network, the load balancer was installed in front of the VM to 
-+  protect Azure resources within virtual networks
-+  monitor and log the configuration and traffic of virtual networks, subnets, and NICs
-+  protect critical web applications
-+  deny communications with known malicious IP addresses
-+  record network packets
-+  deploy network-based intrusion detection/intrusion prevention systems (IDS/IPS)
-+  manage traffic to web applications
-+  minimize complexity and administrative overhead of network security rules
-+  maintain standard security configurations for network devices
-+  document traffic configuration rules
-+  use automated tools to monitor network resource configurations and detect changes
+   - protect Azure resources within virtual networks.
+   - monitor and log the configuration and traffic of virtual networks, subnets, and NICs.
+   - protect critical web applications
+   - deny communications with known malicious IP addresses
+   - record network packets
+   - deploy network-based intrusion detection/intrusion prevention systems (IDS/IPS)
+   - manage traffic to web applications
+   - minimize complexity and administrative overhead of network security rules
+   - maintain standard security configurations for network devices
+   - document traffic configuration rules
+   - use automated tools to monitor network resource configurations and detect changes
 
-What is the advantage of a jump box?
+
+> What is the advantage of a jump box?
 - A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a is a "bridge" between two trusted networks between zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
 
 Integrating an Elastic Stack server allows users to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
 
-What does Filebeat watch for?
+> What does Filebeat watch for?
 - Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
 
-What does Metricbeat record?
+> What does Metricbeat record?
 - Metricbeat helps monitor servers by collecting metrics from the system and services running on the server so it records machine metrics and stats, such as uptime.
 
 The configuration details of each machine may be found below.
@@ -62,12 +63,7 @@ The configuration details of each machine may be found below.
 | ELKServer    |Kibana       | 104.45.159.216 ; 10.1.0.4     | Linux            |
 | RedTeam-LB|Load Balancer| 40.122.215.16| DVWA            |
  
-In addition to the above, Azure has provisioned a load balancer in front of all machines except for the jump box. The load balancer's targets are organized into the following availability zones:
-
-
-- Availability Zone 1: Web-1 + Web-2
-
-- Availability Zone 2: ELKServer
+In addition to the above, Azure has provisioned a load balancer in front of all machines except for the jump box. The load balancer's targets are organized into availability zones: Web-1 + Web-2
 
 
 ### Access Policies
@@ -85,15 +81,63 @@ A summary of the access policies in place can be found in the table below.
 | DVWA 1   | No                  |  10.0.0.1-254        |
 | DVWA 2   | No                  |  10.0.0.1-254        |
 
+
  
-### Elk Configuration
+---
+
+
+### ELK Configuration
  
 Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
 
-What is the main advantage of automating configuration with Ansible?
+> What is the main advantage of automating configuration with Ansible?
 - Ansible is focusing on bringing a server to a certain state of operation.
 
-The playbook implements the following tasks:
+<details>
+<summary> <b> Click here to view ELK Configuration. </b> </summary>
+
+---
+ 
+We will configure an ELK server within virtual network. Specifically,
+ 
+1. Deployed a new VM on your virtual network.
+2. Created an Ansible play to install and configure an ELK instance.
+3. Restricted access to the new server.
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ The playbook implements the following tasks:
 
 ```yaml
 ---
@@ -217,18 +261,18 @@ The following screenshot displays the result of running `curl` after start ELK c
 ![Docker curl output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CurlResult.png)
  
 ⚠️ Checkpoint ⚠️
-✔️ An Ansible playbook has been created that installs and configures an ELK container.
-✔️ The Ansible playbook can be run on the new VM.
+ + ✔️ An Ansible playbook has been created that installs and configures an ELK container.
+ + ✔️ The Ansible playbook can be run on the new VM.
 
-The final step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
+This step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
 
+Go to Network Security Group to config your host IP to Kibana as follow
 
+![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/InboundSecRules.png)
 
+</details>
 
-
-
-
-
+---
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -244,6 +288,12 @@ I have installed the following Beats on these machines:
 These Beats allow us to collect the following information from each machine:
 
 `Filebeat`: Filebeat detects changes to the filesystem. I use it to collect system logs and more specifically, I use it to detect SSH login attempts and failed sudo escalations.
+
+
+<details>
+<summary> <b> Click here to view Target Machines & Beats. </b> </summary>
+
+---
 
 Filebeat playbook I used below:
 
@@ -318,8 +368,17 @@ Metricbeat playbook I used below:
       enabled: yes
 ```
  
+</details>
+
+---
+ 
 ### Using the Playbook
 In order to use the playbooks, you will need to have an Ansible control node already configured (I use my Jump Box as the Ansible control node), copy the playbooks to the Ansible control node and run the playbooks on the appropriate targets. 
+
+<details>
+<summary> <b> Click here to view Using the Playbook. </b> </summary>
+
+---
 
 First, I SSH into the control node and follow the steps below:
 
@@ -327,12 +386,11 @@ First, I SSH into the control node and follow the steps below:
 - Update the "hosts" file to include the groups of hosts representing the targeted servers to run the playbooks on.
 - Run the playbooks, and navigate to the ELK server to check that the installation worked as expected.
 
-So first I connect to my Jump Box using the following command to SSH into the box:
+So, first I connect to my Jump Box using the following command to SSH into the box:
 
 ```bash
 ssh sysadmin@168.61.162.23
 ```
-
 
 ![SSH into ump box](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/SSH_into_Jump_Box.png)
 
@@ -591,3 +649,33 @@ Note that I need to press CTRL + C to stop the `wget` requests since I am using 
 
 
 My Elastic Stack server is now functioning and correctly monitoring my load-balanced exposed DVWA web application.
+
+</details>
+
+---
+
+
+### Citations and References:
+
+#### General Resources:
+
+- [`elk-docker` Container Documentation](https://elk-docker.readthedocs.io/)
+- [Elastic.co: The Elastic Stack](https://www.elastic.co/elastic-stack)
+- [Ansible Documentation](https://docs.ansible.com/ansible/latest/index.html)
+- [`elk-docker` Image Documentation](https://elk-docker.readthedocs.io/#elasticsearch-logstash-kibana-elk-docker-image-documentation)
+- [Virtual Memory Documentation](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/vm-max-map-count.html#vm-max-map-count)
+- [Docker Commands Cheatsheet](https://phoenixnap.com/kb/list-of-docker-commands-cheat-sheet)
+
+#### Azure Documentation:
+
+- Azure's page on peer networks: [Network-Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)
+- Peer networking in Azure How-To: [Global vNet Peering](https://azure.microsoft.com/en-ca/blog/global-vnet-peering-now-generally-available/)
+- Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
+
+#### Credits to friends and acquaintances:
+- © Trilogy Education Services, a 2U, Inc., Instructor and TAs. 
+- © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
+- Reserect Team, I believe we all work and learn together.
+
+---
+
