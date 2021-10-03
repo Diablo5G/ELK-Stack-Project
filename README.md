@@ -43,9 +43,9 @@ Load balancing ensures that the application will be highly available, in additio
 
 
 > What is the advantage of a jump box?
-- A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a is a "bridge" between two trusted networks between zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
+- A Jump Box or a "Jump Server" is a gateway on a network used to access and manage devices in different security zones. A Jump Box acts as a "bridge" between two trusted networks zones and provides a controlled way to access them. We can block the public IP address associated with the VM. It helps to improve security also prevents all Azure VM’s to expose to the public.
 
-Integrating an Elastic Stack server allows users to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
+Integrating an Elastic Stack server allows us to easily monitor the vulnerable VMs for changes to their file systems and system metrics such as privilege escalation failures, SSH logins activity, CPU and memory usage, etc.
 
 > What does Filebeat watch for?
 - Filebeat helps keep things simple by offering a lightweight way (low memory footprint) to forward and centralize logs, files and watches for changes.
@@ -88,7 +88,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### ELK Configuration
  
-Ansible was used to automate configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs and configurations on hundreds of servers at once, and the best part is that the process is the same whether you're managing one machine or dozens and even hundreds.
+Ansible was used to automate the configuration of the ELK server. No configuration was performed manually, which is advantageous because Ansible can be used to easily configure new machines, update programs, and configurations on hundreds of servers at once, and the best part is that the process is the same whether we're managing one machine or dozens and even hundreds.
 
 > What is the main advantage of automating configuration with Ansible?
 - Ansible is focusing on bringing a server to a certain state of operation.
@@ -100,36 +100,36 @@ Ansible was used to automate configuration of the ELK server. No configuration w
  
 We will configure an ELK server within virtual network. Specifically,
  
-- Deployed a new VM on your virtual network.
+- Deployed a new VM on our virtual network.
 - Created an Ansible play to install and configure an ELK instance.
 - Restricted access to the new server.
 
-#### Deployed a new VM on your virtual network. 
+#### Deployed a new VM on our virtual network. 
  
-1. Create a new vNet located in the same resource group you have been using. 
-- Make sure this vNet is located in a new region and not the same region as your other VM's, which region you select is not important as long as it's a different US region than your other resources. Leave the rest of the settings at default.
-- In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If your network is different (10.2.0.0 or 10.3.0.0) it is ok as long as you accept the default settings. Azure automatically creates a network that will work.
+1. Create a new vNet located in the same resource group we have been using. 
+- Make sure this vNet is located in a new region and not the same region as our other VM's, which region we select is not important as long as it's a different US region than our other resources, we can also leave the rest of the settings at default.
+- In this example, that the IP Addressing has automatically created a new network space of 10.1.0.0/16. If our network is different (10.2.0.0 or 10.3.0.0) it is ok as long as we accept the default settings. Azure automatically creates a network that will work.
 
 ![Create vNet](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Create%20vNet.png)  
 
-2. Create a Peer connection between your vNets. This will allow traffic to pass between your vNets and regions. This peer connection will make both a connection from your first vNet to your Second vNet And a reverse connection from your second vNet back to your first vNet. This will allow traffic to pass in both directions.
+2. Create a Peer connection between our vNets. This will allow traffic to pass between our vNets and regions. This peer connection will make both a connection from our first vNet to our second vNet and a reverse connection from our second vNet back to our first vNet. This will allow traffic to pass in both directions.
 - Navigate to `Virtual Network` in the Azure Portal.
-- Select your new vNet to view it's details.
+- Select our new vNet to view it's details.
 - Under `Settings` on the left side, select `Peerings`.
 - Click the + Add button to create a new Peering.
-- A unique name of the connection from your new vNet to your old vNet such as depicted example below.
-- Choose your original RedTeam vNet in the dropdown labeled `Virtual Network`.
+- A unique name of the connection from our new vNet to our old vNet such as depicted example below.
+- Choose our original RedTeam vNet in the dropdown labeled `Virtual Network`.
 - Leave all other settings at their defaults.
  
 ![PeeringsELKtoRed](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/ELKtoRed.png) 
  
 ![PeeringsRedtoELK](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/RedtoELK.png)  
 
-3. Create a new Ubuntu VM in your virtual network with the following configurations:
+3. Create a new Ubuntu VM in our virtual network with the following configurations:
 - The VM must have a public IP address.
-- The VM must be added to the new region in which you created your new vNet. You want to make sure you select your new vNEt and allow a new basic Security Group to be created for this VM.
-- The VM must use the same SSH keys as your WebserverVM's. This should be the ssh keys that were created on the Ansible container that's running on your jump box.
-- After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on your jump box VM.
+- The VM must be added to the new region in which we created our new vNet. We want to make sure we select our new vNEt and allow a new basic Security Group to be created for this VM.
+- The VM must use the same SSH keys as our WebserverVM's. This should be the ssh keys that were created on the Ansible container that's running on our jump box.
+- After creating the new VM in Azure, verify that it works as expected by connecting via SSH from the Ansible container on our jump box VM.
 
    - ```bash
         ssh sysadmin@<jump-box-provisioner>
@@ -143,7 +143,7 @@ We will configure an ELK server within virtual network. Specifically,
  
 ![connect_on_newVM](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/connect_on_newVM.png)  
  
-- Copy the SSH key from the Ansible container on your jump box:
+- Copy the SSH key from the Ansible container on our jump box:
    - RUN `cat id_rsa.pub` Configure a new VM using that SSH key.
  
 ![RSA](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/id_rsa.pub_on_newVM.png) 
@@ -151,11 +151,11 @@ We will configure an ELK server within virtual network. Specifically,
 
 #### Created an Ansible play to install and configure an ELK instance.
 
-In this step, you have to:
-- Add your new VM to the Ansible hosts file.
-- Create a new Ansible playbook to use for your new ELK virtual machine.
-- From your Ansible container, add the new VM to Ansible's hosts file.
-   - RUN `nano /etc/ansible/hosts` and put your IP with `ansible_python_interpreter=/usr/bin/python3`
+In this step, we have to:
+- Add our new VM to the Ansible hosts file.
+- Create a new Ansible playbook to use for our new ELK virtual machine.
+- From our Ansible container, add the new VM to Ansible's hosts file.
+   - RUN `nano /etc/ansible/hosts` and put our IP with `ansible_python_interpreter=/usr/bin/python3`
 
 ![hosts file editing](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/CatHosts.png)  
 
@@ -218,7 +218,7 @@ In this play, the ansible sysctl module configures the target virtual machine (i
         reload: yes
 ```
 
-In this play, the ansible docker_container module is used to download and launch our Elk container. The container is pulled from the docker hub repository. The keyword 'image:' is set with the value "sebp/elk:761", "sebp" is the creator of the container (i.e., Sebastien Pujadas). "elk" is the container and "761" is the version of the container. The keyword 'state:' is set to "started" to start the container upon creation. The keyword 'restart_policy:' is set to "always" and will ensure that the container restarts if you restart your web vm. Without it, you will have to restart your container when you restart the machine.
+In this play, the ansible docker_container module is used to download and launch our Elk container. The container is pulled from the docker hub repository. The keyword 'image:' is set with the value "sebp/elk:761", "sebp" is the creator of the container (i.e., Sebastien Pujadas). "elk" is the container and "761" is the version of the container. The keyword 'state:' is set to "started" to start the container upon creation. The keyword 'restart_policy:' is set to "always" and will ensure that the container restarts if we restart our web vm. Without it, we will have to restart our container when we restart the machine.
 The keyword 'published_ports:' is set with the 3 ports that are used by our Elastic stack configuration, i.e., "5601" is the port used by Kibana, "9200" is the port used by Elasticsearch for requests by default and "5400" is the default port Logstash listens on for incoming Beats connections (we will go over the Beats we installed in the following section "Target Machines & Beats").
 
 ```yaml
@@ -256,7 +256,7 @@ The following screenshot displays the result of running `install-elk.yml`
 
 ![Docker ELKResult output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Install_elk_result.png)
 
-SSH to your container: ```ssh sysadmin@10.1.0.4``` and RUN ```sudo docker ps```
+SSH to our container: ```ssh sysadmin@10.1.0.4``` and RUN ```sudo docker ps```
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the Elastic Stack instance.
 
@@ -277,7 +277,7 @@ The following screenshot displays the result of running `curl` after start ELK c
 	
 This step is to restrict access to the ELK VM using Azure's network security groups (NSGs). We need to add public IP address to a whitelist, just as we did when clearing access to jump box.
 
-Go to Network Security Group to config your host IP to Kibana as follow
+Go to Network Security Group to config our host IP to Kibana as follow
 
 ![Docker InboundSecRules output](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Docker%20InboundSecRules%20output.png)
 
@@ -312,14 +312,14 @@ These Beats allow us to collect the following information from each machine:
 
 We will create a [filebeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/filebeat-config.yml) and [metricbeat-config.yml](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Ansible/metricbeat-config.yml) configuration files, after which we will create the Ansible playbook files for both of them.
 
-Once you have this file on your Ansible container, edit it as specified:
+Once we have this file on our Ansible container, edit it as specified:
 - The username is elastic and the password is changeme.
-- Scroll to line #1106 and replace the IP address with the IP address of your ELK machine.
+- Scroll to line #1106 and replace the IP address with the IP address of our ELK machine.
 output.elasticsearch:
 hosts: ["10.1.0.4:9200"]
 username: "elastic"
 password: "changeme"
-- Scroll to line #1806 and replace the IP address with the IP address of your ELK machine.
+- Scroll to line #1806 and replace the IP address with the IP address of our ELK machine.
 	setup.kibana:
 host: "10.1.0.4:5601"
 - Save both files filebeat-config.yml and metricbeat-config.yml into `/etc/ansible/files/`
@@ -371,7 +371,7 @@ RUN `nano filebeat-playbook.yml` to enable the filebeat service on boot by Fileb
 
 ![Filebeat_playbook_result](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_result.png)  
 
-Verify that your playbook is completed by navigate back to the Filebeat installation page on the ELK server GUI
+Verify that our playbook is completed by navigate back to the Filebeat installation page on the ELK server GUI
 
 ![Filebeat_playbook_verify](https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/Filebeat_playbook_verify.png)
 	
@@ -497,7 +497,7 @@ while true; do for i in {5..6}; do ssh Web_1@10.0.0.$i; done
 
    - `while` begins the `while` loop.
 
-   - `true` will always be equal to `true` so this loop will never stop, unless you force quit it.
+   - `true` will always be equal to `true` so this loop will never stop, unless we force quit it.
 
    - `;` separates the portions of our `while` loop when it's written on one line.
 
@@ -540,7 +540,7 @@ sudo apt install stress
 sudo stress --cpu 1
 ```
 
-   - _Note: The stress program will run until you quit with Ctrl+C._
+   - _Note: The stress program will run until we quit with Ctrl+C._
 	
 Next, view the Metrics page for that VM in Kibana and comparing 2 of web servers to see the differences in CPU usage, confirmed that `metricbeat` is capturing the increase in CPU usage due to our stress command:
 
