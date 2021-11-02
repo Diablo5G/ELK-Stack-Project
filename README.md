@@ -659,9 +659,9 @@ My Elastic Stack server is now functioning and correctly monitoring my load-bala
 - Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 #### Special thanks:
-- © Trilogy Education Services, a 2U, Inc., Instructor Jerry and TAs; Matt, Jansen, Micheal. 
+- © Trilogy Education Services, a 2U, Inc., Instructor Jerry Arnold and TAs; Matt McNew, Jansen Russell, Michael Stephenson.
 - © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
-- Reserect Team, I believe we all work and learn together. Hector, Javier, Donald, Micheal.
+- Resurrect Team, I believe we all work and learn together. @MolinaSandoz Hector, Javier, Donald, Michael.
 
 ---
 
