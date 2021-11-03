@@ -661,7 +661,7 @@ My Elastic Stack server is now functioning and correctly monitoring my load-bala
 #### Special thanks:
 - © Trilogy Education Services, a 2U, Inc., Instructor Jerry Arnold and TAs; Matt McNew, Jansen Russell, Michael Stephenson.
 - © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
-- Resurrect Team, I believe we all work and learn together. @MolinaSandoz Hector, Javier, Donald, Michael.
+- Resurrect Team, I believe we five all work and learn together, Hector Molina Sandoz, Javier Morales, Donald, Michael.
 
 ---
 
