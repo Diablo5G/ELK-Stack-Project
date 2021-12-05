@@ -1,3 +1,8 @@
+
+<img align="center" width="5600" height="530" src="https://github.com/Diablo5G/ELK-Stack-Project/blob/main/Resources/Images/splashscreen.jpg">
+
+---
+
 ## ELK-Stack-Project
 **Automated ELK Stack Deployment**
  
