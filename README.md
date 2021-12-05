@@ -658,10 +658,13 @@ My Elastic Stack server is now functioning and correctly monitoring my load-bala
 - Peer networking in Azure How-To: [Global vNet Peering](https://azure.microsoft.com/en-ca/blog/global-vnet-peering-now-generally-available/)
 - Microsoft Support: [How to open a support ticket](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
+---
+
 #### Special thanks:
-- © Trilogy Education Services, a 2U, Inc., Instructor Jerry Arnold and TAs; Matt McNew, Jansen Russell, Michael Stephenson.
-- © The University of Texas at Austin Boot Camp, The Cybersecurity program. 
-- Resurrect Team, I believe we five all work and learn together, Hector Molina Sandoz, Javier Morales, Donald, Michael.
+
+© Trilogy Education Services, a 2U, Inc., Instructor Jerry Arnold and TAs; Matt McNew, Jansen Russell, Micheal Stephenson.
+
+© The University of Texas at Austin Boot Camp, The Cybersecurity program.
 
 ---
 
